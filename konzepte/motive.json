@@ -1,0 +1,58 @@
+[
+ {
+  "id": "SPM-01",
+  "file": "01-hero-streiflicht",
+  "ar": "16:9",
+  "ref": null,
+  "use": "Film 1 First Frame (Panel 1, Hero) + Desktop-Standbild; Handy = Ausschnitt aus 4K",
+  "prompt": "SPM-01. Photorealistic cinematic automotive studio photograph. A dark graphite grey modern compact five-door hatchback, completely unbranded, no badges, no logos, no emblem on the grille, blank license plate, stands in a pitch-black photo studio on a polished dark concrete floor, three-quarter front view from the front left, the car fills the right two thirds of the frame, the left third of the image is calm and almost black. A single long horizontal white LED light bar hangs on two thin black cables above the car and is reflected as one long sharp white line running across the hood, the front left fender and the driver door. The front left fender and the front of the driver door are visibly dented with a deep crease and small paint scrapes, and exactly at the dent the reflected light line bends, breaks and wobbles, clearly revealing the damage. Low-key lighting, deep blacks, subtle cool rim light on the car edges, ultra sharp details, full-frame camera, 50mm, realistic paint and metal, no people, no text, no logos, no clichés, 16:9."
+ },
+ {
+  "id": "SPM-05",
+  "file": "05-handy-foto",
+  "ar": "16:9",
+  "ref": null,
+  "use": "Kapitel Schaden fotografieren (Panel 5)",
+  "prompt": "SPM-05. Photorealistic close-up photograph in a dark studio: a human hand holds a modern black smartphone without any brand logo upright in portrait orientation, the phone is in the right half of the frame, the phone screen shows a sharp live camera view of a dented dark graphite car fender with a deep crease. Behind the phone the same dented dark graphite car fender is softly out of focus. The left half of the image is dark and calm. Low-key lighting, subtle cool cyan rim light, realistic skin and glass reflections, full-frame camera, 85mm, shallow depth of field, no text on the screen, no app interface, no logos, 16:9."
+ },
+ {
+  "id": "SPM-06",
+  "file": "06-doku-foto",
+  "ar": "4:3",
+  "ref": null,
+  "use": "Foto im Gutachten (Panel 6), Doku-Beweisfoto",
+  "prompt": "SPM-06. Professional documentation photograph taken by a car damage assessor: close-up of a dark graphite car door panel with a deep dent and a sharp crease and small paint scrapes, a yellow folding carpenter's scale ruler with black centimeter and millimeter marks is held flat against the panel directly next to the dent, two fingertips hold the ruler at the edge, direct camera flash lighting, crisp evidence-photo look, ultra sharp metal and paint detail, no logos, no text other than the ruler numbers, 4:3."
+ },
+ {
+  "id": "SPM-08",
+  "file": "08-karriere",
+  "ar": "16:9",
+  "ref": null,
+  "use": "Film Karriere First Frame (Panel 8)",
+  "prompt": "SPM-08. Photorealistic cinematic photograph inside a modern, clean car damage assessment hall with long LED strip lights on a dark ceiling and a polished dark floor. A confident young woman in her early twenties, hair tied back, natural look, wearing a modern black softshell workwear jacket with thin cyan details, holds a tablet in both hands and looks into the camera with a calm, self-assured slight smile. She stands in the right third of the frame next to the front of a dark graphite unbranded hatchback, the left half of the image is darker and calm. Realistic, modern, current professional workwear, no clichés, no overalls with dirt, no tools in her hands except the tablet, no logos, no text, full-frame camera, 50mm, shallow depth of field, 16:9."
+ },
+ {
+  "id": "SPM-02",
+  "file": "02-messen",
+  "ar": "16:9",
+  "ref": "SPM-01",
+  "use": "Film 2 First Frame (Panel 2, Messen)",
+  "prompt": "SPM-02. Use the reference image for the exact same car, same studio, same LED light bar and the same camera angle, slightly closer. An automotive damage assessor in his thirties with short hair, wearing a modern fitted black polo shirt and dark trousers, kneels next to the front left fender and holds a compact black handheld digital paint thickness gauge, about the size of a small smartphone, in his right hand and presses its round sensor tip at the top end flat and perpendicular onto the dented fender, the display faces him, his left hand rests on his knee, he looks at the gauge display. Realistic professional work, no clichés, no overalls, no logos, no text, low-key studio lighting, the reflected LED line still visibly broken at the dent, ultra sharp, 16:9."
+ },
+ {
+  "id": "SPM-03",
+  "file": "03-wireframe",
+  "ar": "16:9",
+  "ref": "SPM-01",
+  "use": "Übergang Film → Motion (Panel 3), deckungsgleich zu SPM-01",
+  "prompt": "SPM-03. Edit the reference image: keep the camera, framing, perspective and the car silhouette exactly identical and in the exact same position and size. Replace the photographic car with a precise glowing electric cyan technical wireframe line drawing of the same car on a pure black background, fine mesh lines following every body panel, wheels and windows, the LED light bar removed, the studio completely black. The dented zones on the front left fender and the driver door glow brighter cyan with a denser mesh. No text, no labels, no logos, 16:9."
+ },
+ {
+  "id": "SPM-07",
+  "file": "07-ergebnis",
+  "ar": "16:9",
+  "ref": "SPM-01",
+  "use": "Ergebnis (Panel 7), deckungsgleich zu SPM-01 für Vorher/Nachher",
+  "prompt": "SPM-07. Edit the reference image, keep everything exactly the same: camera, framing, studio, floor, the LED light bar and the car in the exact same position. Change only the damage: the front left fender and the driver door are now perfectly repaired, smooth flawless paint, no dent, no crease, no scrapes, and the reflected white light line now runs perfectly straight and unbroken across hood, fender and door. No text, no logos, 16:9."
+ }
+]

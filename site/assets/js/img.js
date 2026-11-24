@@ -1,0 +1,1 @@
+window.SP_IMG={"01-hero-streiflicht": {"w": 5504, "h": 3072}, "02-messen": {"w": 5504, "h": 3072}, "03-wireframe": {"w": 5504, "h": 3072}, "05-handy-foto": {"w": 5504, "h": 3072}, "06-doku-foto": {"w": 4800, "h": 3584}, "07-ergebnis": {"w": 5504, "h": 3072}, "08-karriere": {"w": 5504, "h": 3072}, "_v": 1795486215};

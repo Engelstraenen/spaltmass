@@ -1,0 +1,6 @@
+.env*
+node_modules/
+assets-roh/
+.DS_Store
+tools/.assets-cache.json
+vorschau/
