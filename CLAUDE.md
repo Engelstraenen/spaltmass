@@ -34,6 +34,8 @@ sjinn.ai im Chrome eingeloggt ✅ · GitHub (gh) prüfen vor Push
 ## 7. Befehle
 - Vorschau: `python3 tools/serve.py 4393` → http://127.0.0.1:4393/
 - Bilder: `python3 tools/assets.py` (assets-roh/4k → site/assets/img)
+- Video: `python3 tools/video.py <roh.mp4> hero|messen|karriere` (All-Intra + Handy-Ausschnitt, schreibt vid.js)
+- Veröffentlichen: `git push` + `git subtree split --prefix site -b gh-pages && git push -f origin gh-pages` → https://engelstraenen.github.io/spaltmass/
 - Prüfen: `python3 tools/check.py <url> <ordner> 1440x900 schaden:0,...` · Handy: `python3 tools/mobil_check.py <url> <ordner>`
 
 ## 8. Offene Fragen
