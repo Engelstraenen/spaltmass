@@ -58,14 +58,15 @@
   }
 
   /* ---------- Film: Video spulen (wenn vorhanden), sonst Standbild mit Kamerafahrt ---------- */
-  function Film(sec) {
-    var box = $('.media', sec), v = $('.vid', box), ok = false;
+  function Film(sec, sel, cls) {
+    var box = $('.media', sec), v = $(sel || '.vid', box), ok = false;
+    if (!v) return function () { return false; };
     var key = v.getAttribute('data-key'), VID = window.SP_VID || {};
     if (VID[key]) {
       var s = document.createElement('source');
       s.src = v.getAttribute('data-src') + (mobile() ? (innerWidth / innerHeight <= .75 ? '-p' : '-m') : '') + '.mp4?v=' + (VID._v || 1);
       s.type = 'video/mp4'; v.appendChild(s);
-      v.addEventListener('loadeddata', function () { ok = true; sec.classList.add('has-vid'); });
+      v.addEventListener('loadeddata', function () { ok = true; sec.classList.add(cls || 'has-vid'); });
       v.load(); var pr = v.play && v.play(); if (pr && pr.then) pr.then(function () { v.pause(); }).catch(function () {});
     }
     var want = 0, cur = 0;
@@ -92,7 +93,7 @@
   }
 
   /* ---------- 1 Schaden: Streiflicht → Messen ---------- */
-  var s1 = $('#schaden'), f1 = Film(s1), s1b = $('.s1', s1), s1m = $('.s2', s1), pins = $$('.pin', s1);
+  var s1 = $('#schaden'), f1 = Film(s1), f1m = Film(s1, '.vid2', 'has-vid2'), v1m = $('.vid2', s1), reads = $$('.reads b', s1), s1b = $('.s1', s1), s1m = $('.s2', s1), pins = $$('.pin', s1);
   function u1() {
     var p = prog(s1), vid = f1(seg(p, 0, .55), f1 ? 1 + seg(p, 0, .55) * .06 : 1);
     s1.style.setProperty('--g', (.4 + .6 * Math.sin(Date.now() / 900) * .5 + .3).toFixed(2));
@@ -100,13 +101,16 @@
     var m = seg(p, .42, .54);
     if (vid) { m = seg(p, .47, .53); $('.vid', s1).style.opacity = (1 - seg(p, .41, .47)).toFixed(3); }   // Abblende statt Doppelbild
     if (s1m) s1m.style.opacity = m.toFixed(3);
+    var mv = f1m(seg(p, .53, .95));   // Messen-Film spult nach der Abblende
+    if (v1m) v1m.style.opacity = mv ? m.toFixed(3) : '0';
+    reads.forEach(function (b, i) { count(b, +b.getAttribute('data-count'), eout(seg(p, .62 + i * .12, .74 + i * .12))); });
     if (!vid) s1b.style.transform = 'scale(' + (1 + seg(p, 0, .5) * .08).toFixed(4) + ')';
     show($('.b-mess', s1), band(p, .5, .98, .07), 26, !mobile());
     pins.forEach(function (pn, i) {
       var xy = onCover($('.media', s1), +pn.getAttribute('data-ix'), +pn.getAttribute('data-iy'), s1m || null);
       pn.style.setProperty('--px', xy[0].toFixed(1) + 'px'); pn.style.setProperty('--py', xy[1].toFixed(1) + 'px');
       var inView = xy[0] > 50 && xy[0] < innerWidth - 50;
-      var on = inView && p > .58 + i * .1 && p < .97; pn.classList.toggle('on', on);
+      var on = !mv && inView && p > .58 + i * .1 && p < .97; pn.classList.toggle('on', on);   // mit Film: Messwerte als Anzeige im Text
       count($('b', pn), +$('b', pn).getAttribute('data-count'), eout(seg(p, .58 + i * .1, .7 + i * .1)));
     });
   }
