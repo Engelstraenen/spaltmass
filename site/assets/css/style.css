@@ -64,6 +64,12 @@ body:not(.scrolled) .nav{top:37px}
 .media .vid{opacity:0;transition:opacity .4s}
 .has-vid .media .vid{opacity:1}
 .has-vid .media .still:not(.s2){opacity:0}
+#schaden .media .vid2{--tx:0%;opacity:0;transition:none}
+.reads{display:none;gap:12px;flex-wrap:wrap;margin-top:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.has-vid2 .reads{display:flex}
+.reads span{padding:8px 14px;border:1.5px solid var(--cy);border-radius:8px;background:rgba(6,8,10,.7);backdrop-filter:blur(6px)}
+.reads span.hot{border-color:var(--hot)}
+.reads b{font-size:1.15em}
 .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(6,8,10,.86) 0%,rgba(6,8,10,.45) 38%,rgba(6,8,10,0) 62%),linear-gradient(0deg,rgba(6,8,10,.7),rgba(6,8,10,0) 30%)}
 .beat{position:absolute;left:var(--pad);top:50%;transform:translateY(-50%);max-width:min(640px,88vw);opacity:0;will-change:opacity,transform}
 .b-hero{max-width:min(860px,88vw)}
