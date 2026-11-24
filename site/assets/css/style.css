@@ -65,8 +65,7 @@ body:not(.scrolled) .nav{top:37px}
 .has-vid .media .vid{opacity:1}
 .has-vid .media .still:not(.s2){opacity:0}
 #schaden .media .vid2{--tx:0%;opacity:0;transition:none}
-.reads{display:none;gap:12px;flex-wrap:wrap;margin-top:18px;font-weight:700;font-variant-numeric:tabular-nums}
-.has-vid2 .reads{display:flex}
+.reads{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;font-weight:700;font-variant-numeric:tabular-nums}
 .reads span{padding:8px 14px;border:1.5px solid var(--cy);border-radius:8px;background:rgba(6,8,10,.7);backdrop-filter:blur(6px)}
 .reads span.hot{border-color:var(--hot)}
 .reads b{font-size:1.15em}
