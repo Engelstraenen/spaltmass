@@ -29,7 +29,7 @@
     p01: { vis: [-1, -1, HAS_V1 ? .07 : .10, HAS_V1 ? .08 : .14], cam: [[0, .5, .55, 1], [.14, .5, .55, 1.12]] },
     v1:  { vis: [.06, .07, .27, .31], cam: [[.06, .5, .55, 1], [.31, .5, .55, 1.08]], scrub: [.07, .30] },
     p04: { vis: [.28, .32, .41, .44], cam: [[.28, .5, .5, 1.35], [.33, .5, .5, 1.04], [.44, .5, .5, 1.12]] },
-    p05: { vis: [.42, .45, .55, .58], cam: [[.42, .5, .55, 1.18], [.5, .5, .55, 1.02], [.58, .5, .55, 1]] },
+    p05: { vis: [.42, .45, .55, .58], cam: [[.42, .5, .55, 1.26], [.5, .45, .55, 1.12], [.58, .45, .55, 1.1]] },
     p06: { vis: [.56, .59, .68, .70], cam: [[.56, .5, .5, 1.12], [.70, .5, .5, 1]] },
     p07: { vis: [.69, .705, .79, .82], cam: [[.69, .5, .55, 1.3], [.82, .5, .55, 1]] },
     p08: { vis: [.80, .83, .89, .92], cam: [[.80, .6, .5, 1.1], [.92, .62, .5, 1]] },
@@ -87,7 +87,8 @@
 
   /* ---------- Grafik ---------- */
   var wall = $('.wall'), screens = $('.screens'), strip = $('.strip'), paper = $('.paper'), phone = $('.phone'), flash = $('.flash'), prog = $('.prog'), hint = $('.hint');
-  var SLOT = window.SP_SLOT || [.5, .38, .3]; // Druckerschlitz in p06: Mitte x, y, Breite (Bildanteile)
+  var SLOT = window.SP_SLOT || [.483, .172, .27];
+  var PAN = [[.165, .19], [.83, .19]]; // Oberkante der beiden Tafeln in p05 (Bildanteile) // Druckerschlitz in p06: Mitte x, y, Breite (Bildanteile)
   function count(el, t) { var v = +el.getAttribute('data-count') * t, d = +(el.getAttribute('data-dec') || 0); el.textContent = v.toFixed(d).replace('.', ','); }
   var readsB = $$('.tx-messen .reads b'), stars = $('.stars'), scoreB = $('.score b'), gmeta = $('.g-meta b');
   var quotes = $$('.quotes blockquote'), qi = 0;
@@ -119,7 +120,8 @@
     wall.style.opacity = band(p, .13, .16, .26, .29).toFixed(3);
     $$('li', wall).forEach(function (li, i) { li.style.opacity = eout(seg(p, .14 + i * .02, .16 + i * .02)); });
     readsB.forEach(function (b, i) { count(b, eout(seg(p, .34 + i * .01, .37 + i * .01))); });
-    screens.style.opacity = band(p, .455, .48, .55, .575).toFixed(3); screens.style.setProperty('--g', eout(seg(p, .47, .51)).toFixed(3));
+    screens.style.opacity = band(p, .455, .48, .55, .575).toFixed(3);
+    if (!MOB && CAMS.p05) { var l = scr('p05', PAN[0][0], PAN[0][1]), r = scr('p05', PAN[1][0], PAN[1][1]); screens.style.setProperty('--lx', l[0] + 'px'); screens.style.setProperty('--rx', Math.min(r[0], W - 150) + 'px'); screens.style.setProperty('--ty', Math.max(80, l[1]) + 'px'); } screens.style.setProperty('--g', eout(seg(p, .47, .51)).toFixed(3));
     var so = band(p, .595, .61, .67, .69); strip.style.opacity = so.toFixed(3);
     if (so > .01 && CAMS.p06) { var a = scr('p06', SLOT[0] - SLOT[2] / 2, SLOT[1]), b = scr('p06', SLOT[0] + SLOT[2] / 2, SLOT[1]);
       strip.style.setProperty('--sx', a[0] + 'px'); strip.style.setProperty('--sy', a[1] + 'px'); strip.style.setProperty('--sw', (b[0] - a[0]) + 'px');
@@ -174,7 +176,7 @@
 
   /* ---------- 130-%-Check (Panel 5) ---------- */
   var T130 = { 60: 'Reparatur lohnt sich. Dazu kommen Wertminderung und Nutzungsausfall.', 115: '130-%-Regel: Reparieren erlaubt, wenn fachgerecht nach Gutachten repariert wird und Sie das Auto weiter nutzen. Der Gegner zahlt.', 145: 'Wirtschaftlicher Totalschaden: Sie bekommen Wiederbeschaffungswert minus Restwert, den Restwert belegen wir mit echten Angeboten.' };
-  var gv = $('.g-v'), gf = $('.scr-r');
+  var gv = $('.g-v'), gf = $('.scr-r'); gf.style.setProperty('--gv', 72); gv.textContent = '72 %'; // Reparaturkosten 62 / WBW 86
   $$('.t130 button').forEach(function (b) { b.addEventListener('click', function () { var r = +b.getAttribute('data-r'); $$('.t130 button').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); }); $('.t130-out').textContent = T130[r]; gf.style.setProperty('--gv', r); gv.textContent = r + ' %'; }); });
 
   /* ---------- Start, Rücksprung, Navigation ---------- */
