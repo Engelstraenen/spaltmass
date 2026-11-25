@@ -89,6 +89,8 @@
   }
   // Bildpunkt → Schirm
   function scr(k, fx, fy) { var c = CAMS[k], n = natOf(k); if (!c) return [-999, -999]; return [c.x + fx * n[0] * c.s, c.y + fy * n[1] * c.s]; }
+  // Für die Veyra-Bühne: wo liegt das Hero-Bild der Fahrt bei p=0 (Übergabe Rahmen → Vollbild)
+  window.SP_cam0 = function () { place('d01', 0); var c = CAMS.d01, n = natOf('d01'); return c ? { x: c.x, y: c.y, w: n[0] * c.s, h: n[1] * c.s } : null; };
   function visOf(k, p) { var v = L[k].vis; return Math.min(v[0] < 0 ? 1 : seg(p, v[0], v[1]), 1 - seg(p, v[2], v[3])); }
 
   /* ---------- Texte ---------- */
@@ -224,7 +226,7 @@
 
   /* ---------- Ring um den Drehteller + Bewertungen ---------- */
   var ring = $('.ring'), rb = $('.ring-b'), rf = $('.ring-f');
-  var TT = window.SP_TT || [.5, .62, .36, .2]; // Drehteller in d09: Mitte x,y, Radius x,y (Bildanteile)
+  var TT = window.SP_TT || [.5, .545, .252, .249]; // Drehteller in d09: Mitte x,y, Radius x,y (Bildanteile)
   function rings(p) {
     var o = Math.min(seg(p, .885, .905), 1 - seg(p, .955, .975)); ring.style.opacity = o.toFixed(3); if (o < .01 || !CAMS.d09) return;
     var c = scr('d09', TT[0], TT[1]), e = scr('d09', TT[0] + TT[2], TT[1] + TT[3]), rx = e[0] - c[0], ry = e[1] - c[1];
