@@ -7,8 +7,7 @@
 <meta name="description" content="Unabhängige Kfz-Sachverständige: Schaden per Handy melden, vor Ort in 24 h, Gutachten in 48 h. Bei unverschuldetem Unfall wählen Sie den Gutachter, die gegnerische Versicherung zahlt.">
 <meta name="theme-color" content="#1d1420">
 <link rel="preload" href="assets/fonts/grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=21">
-<link rel="stylesheet" href="assets/css/szene.css?v=21">
+<link rel="stylesheet" href="assets/css/style.css?v=22">
 </head>
 <body>
 <a class="skip" href="#kontakt-panel">Zum Kontakt</a>
@@ -27,62 +26,6 @@
   <a class="nav-cta" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a>
   <button class="burger" aria-label="Menü" aria-expanded="false"><i></i><i></i></button>
 </header>
-
-<!-- Bühne nach Vorlage motionsites „Veyra Electric“: Rahmen, Hotspots an den Schäden, Detail-Zoom, Farb-/Vorher-Nachher-Menü -->
-<div id="szene-wrap">
-<section class="experience phase-overview" id="experience" aria-busy="false" aria-label="Unfallauto erkunden">
-  <header class="masthead">
-    <a class="wordmark" href="#" aria-label="SPALTMASS, Übersicht">SPALTMASS</a>
-    <span class="header-middle">Kfz-Sachverständige · unabhängig</span>
-    <a class="concept-label sz-call" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a>
-  </header>
-  <section class="sz-stage" id="szStage" aria-label="Schäden am Unfallauto">
-    <div class="image-plane" id="plane">
-      <div class="media-envelope">
-        <div class="exterior-envelope">
-          <div class="car-visual">
-            <img class="car-image" id="carImage" alt="Silberner Kombi mit Unfallschaden auf einem Drehteller" draggable="false"/>
-            <canvas class="hover-video" id="hoverCanvas" aria-hidden="true"></canvas>
-            <div class="appearance-visual" id="appearanceVisual" aria-hidden="true"><img id="appearanceImage" alt="" draggable="false"/></div>
-          </div>
-        </div>
-        <div class="detail-visual" id="detailVisual"><img class="detail-image" id="detailImage" alt="" draggable="false"/></div>
-      </div>
-      <div id="hotspotLayer"></div>
-      <div id="annotationLayer"></div>
-    </div>
-    <div class="intro" id="intro">
-      <h1>Jede Delle erzählt den Unfall.</h1>
-      <p class="intro-description"><span>Wir lesen ihn für Sie.</span><span>Tippen Sie auf einen Schaden.</span></p>
-    </div>
-    <button class="sz-back" id="backButton" aria-label="Zurück zum Auto" hidden></button>
-    <aside class="detail-copy" id="detailCopy" aria-hidden="true">
-      <div class="detail-introduction">
-        <p class="eyebrow" id="detailCategory"></p>
-        <h2 id="detailTitle"></h2>
-        <p class="system-description" id="detailDescription"></p>
-      </div>
-      <div class="detail-components">
-        <div class="part-list" id="partList"></div>
-        <div class="benefit"><span>Für Sie</span><p id="detailBenefit"></p></div>
-        <a class="sz-more" id="detailMore" href="#">Alles dazu im Detail</a>
-      </div>
-    </aside>
-    <div class="transition-status" id="status" hidden><span class="small-dot"></span><span id="statusText"></span></div>
-  </section>
-  <footer class="scene-footer">
-    <div class="feature-notes" aria-label="Was wir für Sie tun">
-      <div class="feature-note"><h3>24/7 erreichbar</h3><p>Fotos schicken, Rückruf in 15 Minuten. Auch nachts und am Wochenende.</p></div>
-      <div class="feature-note"><h3>Vor Ort in 24 h</h3><p>Wir kommen zu Ihnen nach Hause, zur Arbeit oder in die Werkstatt.</p></div>
-      <div class="feature-note"><h3>Gutachten in 48 h</h3><p>Mit Fotos, Maßen, Wertminderung und Nutzungsausfall.</p></div>
-      <div class="feature-note"><h3>Ihre Wahl</h3><p>Unverschuldet? Sie wählen den Gutachter, der Gegner zahlt.</p></div>
-    </div>
-    <div class="footer-baseline"><span>SPALTMASS — Kfz-Sachverständige</span><span id="footerNote">Tippen Sie auf eine Delle. Oder scrollen Sie: einmal rund ums Auto.</span></div>
-  </footer>
-  <p class="sr-only" role="status" aria-live="polite" id="srStatus">Unfallauto. Wählen Sie einen Schaden.</p>
-  <div class="error-message" id="errorMessage" role="alert" hidden></div>
-</section>
-</div>
 
 <main id="fahrt">
   <div class="stage" id="stage">
@@ -131,10 +74,24 @@
     <!-- Texte je Kapitel -->
     <section class="tx tx-hero" data-tx="hero" id="start">
       <p class="kick">Unabhängige Kfz-Sachverständige</p>
-      <h2>Einmal rund<br>ums Auto.</h2>
-      <p class="lead">Wir lesen ihn für Sie. Schaden per Handy melden, vor Ort in 24&nbsp;h, Gutachten in 48&nbsp;h.</p>
-      <div class="btns"><button class="btn" data-open="melden">Schaden melden</button><a class="btn ghost" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a></div>
+      <h1>Jede Delle <br>erzählt den Unfall.</h1>
+      <p class="lead">Tippen Sie aufs Auto, wo es kaputt ist. Kurz beschreiben, abschicken, anrufen. Vor Ort in 24&nbsp;h, Gutachten in 48&nbsp;h.</p>
     </section>
+
+    <!-- Schaden selbst markieren: Tippen aufs Auto setzt eine Markierung mit Kommentar -->
+    <div class="pins" aria-live="polite"></div>
+    <div class="pin-edit" role="dialog" aria-label="Schaden beschreiben" hidden>
+      <p class="pe-h">Was ist hier kaputt?</p>
+      <div class="pe-chips"><button type="button">Delle</button><button type="button">Kratzer</button><button type="button">Riss</button><button type="button">Scheibe</button><button type="button">Licht</button><button type="button">Stoßfänger</button></div>
+      <input type="text" class="pe-text" placeholder="Eigener Kommentar, z. B. Tür klemmt" aria-label="Kommentar zum Schaden">
+      <div class="pe-act"><button type="button" class="pe-del">Entfernen</button><button type="button" class="btn pe-ok">Fertig</button></div>
+    </div>
+    <aside class="report" aria-label="Ihre Schadensmeldung">
+      <p class="rp-h"><span>Ihre Schadensmeldung</span><b class="rp-n">0</b></p>
+      <ol class="rp-list"></ol>
+      <p class="rp-empty">Noch nichts markiert. Tippen Sie aufs Auto.</p>
+      <div class="rp-act"><button class="btn rp-send" data-open="melden">Schaden abschicken</button><a class="btn ghost rp-call" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a></div>
+    </aside>
 
     <section class="tx tx-orbit" data-tx="orbit"><p class="kick">Drehen Sie mit</p><h2>Drei Schäden.<br>Drei Spuren.</h2><p class="lead">Wir umrunden jedes Auto und gehen jedem Kratzer nach. Fangen wir bei der Tür an.</p></section>
 
@@ -190,8 +147,10 @@
 
     <section class="tx tx-bew" data-tx="bewertungen" id="bewertungen">
       <p class="kick">07 · Bewertungen</p>
-      <div class="score"><b data-count="4.9" data-dec="1">0</b><span class="stars" style="--f:0"><i>★★★★★</i><i>★★★★★</i></span></div>
-      <p class="demo">Beispielwerte · Demo-Seite, noch keine echten Bewertungen</p>
+      <div class="gcard"><p class="g-brand" aria-label="Google"><span style="color:#4285f4">G</span><span style="color:#ea4335">o</span><span style="color:#fbbc05">o</span><span style="color:#4285f4">g</span><span style="color:#34a853">l</span><span style="color:#ea4335">e</span> <small>Bewertungen</small></p>
+        <div class="score"><b data-count="4.9" data-dec="1">0</b><span class="stars" style="--f:0"><i>★★★★★</i><i>★★★★★</i></span></div>
+        <p class="g-meta"><b data-count="214">0</b> Rezensionen · <a href="#" data-demo="Demo: Hier öffnet sich das echte Google-Profil der Firma.">Auf Google ansehen</a></p></div>
+      <p class="demo">Beispiel für Ihre echte Google-Note · Demo-Seite, die Firma ist erfunden</p>
       <div class="quotes" aria-live="polite">
         <blockquote>„Fotos geschickt, am nächsten Morgen stand der Gutachter vor der Tür.“<cite>Beispiel · noch keine echte Bewertung</cite></blockquote>
         <blockquote>„Ich wusste nicht, dass ich den Gutachter selbst wählen darf.“<cite>Beispiel · noch keine echte Bewertung</cite></blockquote>
@@ -231,13 +190,21 @@
       <label><input type="radio" name="s" value="ich"><span>Ich selbst</span></label>
     </fieldset>
     <p class="hinweis" data-hint></p>
+    <div class="mm-pins"></div>
     <label class="shot"><input type="file" accept="image/*" multiple><span>Fotos auswählen</span></label>
     <div class="thumbs" aria-live="polite"></div>
     <p class="small">Die Fotos bleiben in dieser Demo auf Ihrem Gerät.</p>
     <input type="text" placeholder="Name" aria-label="Name" autocomplete="name">
     <input type="tel" placeholder="Telefon" aria-label="Telefon" autocomplete="tel">
-    <button class="btn" value="ok">Absenden</button>
+    <button class="btn" value="ok" type="submit">Schaden abschicken</button>
   </form>
+  <div class="mm done" hidden>
+    <p class="kick">Gemeldet</p>
+    <h3>Ihre Meldung ist beim Gutachter.</h3>
+    <p class="small">Er sieht Ihre Markierungen, Kommentare und Fotos jetzt in seinem Postfach. Rufen Sie direkt an, dann geht er alles mit Ihnen durch.</p>
+    <a class="btn big" href="tel:+4900000000" data-demo="Demo: Hier klingelt der Gutachter, Ihre Meldung liegt ihm vor.">Jetzt Gutachter anrufen</a>
+    <button class="btn ghost mm-close" type="button">Später</button>
+  </div>
 </dialog>
 
 <!-- 60-Sekunden-Bewerbung -->
@@ -254,9 +221,8 @@
 </dialog>
 <div class="toast" role="status" hidden></div>
 
-<script src="assets/js/img.js?v=21"></script>
+<script src="assets/js/img.js?v=22"></script>
 <script src="assets/js/vid.js?v=20"></script>
-<script src="assets/js/app.js?v=21"></script>
-<script src="assets/js/szene.js?v=21"></script>
+<script src="assets/js/app.js?v=22"></script>
 </body>
 </html>
