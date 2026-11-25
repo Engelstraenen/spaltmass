@@ -39,7 +39,7 @@ sjinn.ai im Chrome eingeloggt ✅ · GitHub (gh) prüfen vor Push
 - Prüfen: `python3 tools/check.py <url> <ordner> 1440x900 schaden:0,...` · Handy: `python3 tools/mobil_check.py <url> <ordner>`
 
 ## 8. Offene Fragen
-- 25.11.: Wahl Neuaufbau-Storyboard (SPSB-4 Drehteller / 5 Draufsicht / 6 Hebebühne)
+- Freigabe Startbilder SPD-01 + SPD-07 → Orbit-Filme (Dreamina-Platz über Koordinations-Sitzung)
 
 ## 9. Entschieden
 - 23.11.2026: Fiktiver Name SPALTMASS (Profi-Begriff Spaltmaß, Gewerk eindeutig). Storyboards: 1 „Streiflicht“ (schwarz/Cyan), 2 „Die Unfallnacht“ (Nacht/Orange, 24-h-Geschichte), 3 „Das Labor“ (hell/Signalgelb, Explosionszeichnung, Lackschichten). Prompts `konzepte/prompts.md`.
@@ -49,3 +49,4 @@ sjinn.ai im Chrome eingeloggt ✅ · GitHub (gh) prüfen vor Push
 
 ## 10. Ablage
 Code: dieser Ordner. Storyboards: `konzepte/`. Rohmedien: `assets-roh/` (gitignore).
+- 25.11.2026: Neuaufbau, Eugen wählt Storyboard 1 „Drehteller“ (SPSB-4, konzepte/4-drehteller.jpg): ein Unfallauto auf Drehteller, Scroll umkreist und zoomt in Dellen, jede Delle = Kapitel, eine durchgehende Geschichte. Farbwelt Aubergine #1d1420 + Mint #7ff2c8. Altes Schema (Streiflicht) abgelöst. Drehbuch konzepte/umbau-drehbuch.md, Motive konzepte/motive-drehteller.json (Schäden alle RECHTS: Tür hinten rechts = Delle 01).

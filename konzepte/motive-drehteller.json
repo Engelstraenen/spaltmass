@@ -1,0 +1,56 @@
+[
+ {
+  "id": "SPD-01",
+  "file": "d01-hero",
+  "ref": null,
+  "prompt": "SPD-01. Cinematic automotive studio photograph, 16:9. a dark seamless photo studio in deep aubergine-purple-black tones (#1d1420), a large round matte black turntable platform on the floor, soft overhead softbox light, subtle cool mint-green rim light on the car edges, polished dark floor with faint reflections. On the turntable stands the same silver-grey metallic modern five-door estate car (station wagon), completely unbranded, no badges, no logos, no emblem on grille or tailgate, blank white license plate, three-quarter front view from the front RIGHT, so the whole right side is visible, its damage is all on the RIGHT side: a deep dent with a sharp horizontal crease in the rear right door, a crumpled front right fender with scraped paint, and a scraped rear right bumper corner. The car is placed in the right 60 percent of the frame, the left 40 percent of the image is calm, dark aubergine and empty for a headline. Camera at eye level, 50mm. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-02",
+  "file": "d02-profil",
+  "ref": "SPD-01",
+  "prompt": "SPD-02. Use the reference image for the exact same car, same damage, same studio, same turntable and same light. The turntable has rotated: now show the car in a perfect RIGHT side profile view, front of the car pointing to the right edge of the frame, the deep creased dent in the rear right door clearly visible near the center of the image, the crumpled front right fender and the scraped rear bumper corner visible. Car centered, slightly lower half, calm dark space above. Camera at eye level, 50mm, 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-03",
+  "file": "d03-delle",
+  "ref": "SPD-01",
+  "prompt": "SPD-03. Use the reference image for the exact same silver-grey metallic paint, studio light and damage. Close-up photograph of the rear right door of the car: a deep dent with a sharp horizontal crease and small paint creases fills the center of the frame, the chrome-free black door handle is in the upper right area, the door edge gap runs vertically along the left side of the frame, soft studio light reflections wrap across the silver panel and visibly bend and break inside the dent. Calm, high-end, 16:9, 85mm, f/5.6, every detail sharp. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-04",
+  "file": "d04-handy",
+  "ref": "SPD-03",
+  "prompt": "SPD-04. Use the reference image for the exact same silver door with the creased dent. Photorealistic close-up: a human hand holds a modern black smartphone without any logo in LANDSCAPE orientation in front of the dented door, the phone fills about 55 percent of the frame width and sits in the center right, its screen shows a sharp live camera view of the same dent, behind the phone the same silver door and dent are softly out of focus. The phone screen shows only the camera picture, no interface, no text. Realistic skin and glass reflections, soft studio light with subtle mint rim light, 85mm, shallow depth of field, 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-05",
+  "file": "d05-doku",
+  "ref": "SPD-03",
+  "prompt": "SPD-05. Professional evidence photograph taken by a car damage assessor of the exact same silver door dent as in the reference image: a yellow folding carpenter's scale ruler with black centimeter marks is held flat against the door panel directly below the dent, two fingertips hold the ruler at its end, direct on-camera flash, crisp documentation look, ultra sharp metal and paint detail, 4:3. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-06",
+  "file": "d06-repariert-nah",
+  "ref": "SPD-03",
+  "prompt": "SPD-06. Edit the reference image, keep everything exactly the same: camera, framing, perspective, door handle, door gap, paint color and studio light. Change only the damage: the door is now perfectly repaired, smooth flawless silver paint, no dent, no crease, and the studio light reflection runs as one clean, straight, unbroken band across the panel. 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-07",
+  "file": "d07-repariert",
+  "ref": "SPD-01",
+  "prompt": "SPD-07. Edit the reference image, keep everything exactly the same: camera, framing, studio, turntable, light and the car in the exact same position and size. Change only the damage: rear right door, front right fender and rear bumper corner are now perfectly repaired, smooth flawless silver paint, no dents, no scrapes, clean straight reflections. 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-08",
+  "file": "d08-karriere",
+  "ref": "SPD-07",
+  "prompt": "SPD-08. Use the reference image for the exact same repaired silver estate car, studio and turntable, camera a bit closer to the front of the car. A confident young woman in her mid twenties, hair tied back, natural look, wearing a modern fitted black softshell work jacket with thin mint-green piping and dark work trousers, holds a tablet in both hands and looks into the camera with a calm, self-assured slight smile. She stands in the right third of the frame in front of the car's front right corner, the left 40 percent of the image is calm and dark for text. Realistic modern assessor workwear, no overalls, no dirt, no tools except the tablet, 50mm, shallow depth of field, 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ },
+ {
+  "id": "SPD-09",
+  "file": "d09-oben",
+  "ref": "SPD-07",
+  "prompt": "SPD-09. Use the reference image for the exact same repaired silver estate car and the round black turntable in the dark aubergine studio. Camera high above, looking steeply down at about 70 degrees from the front right, the full car and the complete round turntable visible in the center of the frame with lots of calm dark aubergine floor around it, soft top light, faint reflections. 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no people unless stated, no text, no logos, no watermarks, no clichés."
+ }
+]
