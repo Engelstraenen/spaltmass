@@ -4,3 +4,4 @@ assets-roh/
 .DS_Store
 tools/.assets-cache.json
 vorschau/
+konzepte/*.png
