@@ -87,6 +87,7 @@
 
   /* ---------- Grafik ---------- */
   var wall = $('.wall'), screens = $('.screens'), strip = $('.strip'), paper = $('.paper'), phone = $('.phone'), flash = $('.flash'), prog = $('.prog'), hint = $('.hint');
+  var calls = $('.calls'), CALL = [[.45, .42], [.72, .25]]; // Messwert-Schilder in p04: Fuge, Messgerät
   var SLOT = window.SP_SLOT || [.483, .172, .27];
   var PAN = [[.165, .19], [.83, .19]]; // Oberkante der beiden Tafeln in p05 (Bildanteile) // Druckerschlitz in p06: Mitte x, y, Breite (Bildanteile)
   function count(el, t) { var v = +el.getAttribute('data-count') * t, d = +(el.getAttribute('data-dec') || 0); el.textContent = v.toFixed(d).replace('.', ','); }
@@ -126,6 +127,8 @@
     if (so > .01 && CAMS.p06) { var a = scr('p06', SLOT[0] - SLOT[2] / 2, SLOT[1]), b = scr('p06', SLOT[0] + SLOT[2] / 2, SLOT[1]);
       strip.style.setProperty('--sx', a[0] + 'px'); strip.style.setProperty('--sy', a[1] + 'px'); strip.style.setProperty('--sw', (b[0] - a[0]) + 'px');
       paper.style.setProperty('--feedpx', (eio(seg(p, .6, .665)) * paper.offsetHeight).toFixed(1) + 'px'); paper.style.setProperty('--rot', (seg(p, .64, .68) * 3).toFixed(2) + 'deg'); }
+    var co = band(p, .345, .365, .40, .425); calls.style.opacity = co.toFixed(3);
+    if (co > .01 && CAMS.p04) { CALL.forEach(function (c, i) { var pt = scr('p04', c[0], c[1]), el = calls.children[i]; el.style.left = clamp(pt[0], 12, W - 190) + 'px'; el.style.top = clamp(pt[1], 80, H - 60) + 'px'; }); }
     flash.style.opacity = (Math.max(0, 1 - Math.abs(p - .698) / .014) * .85).toFixed(3);
     kin(kKar, p, .83, .012); stagger(perks, p, .845, .007);
     phone.style.opacity = band(p, .915, .935, 2, 2).toFixed(3);
@@ -140,13 +143,13 @@
   addEventListener('resize', resize); addEventListener('scroll', readScroll, { passive: true });
 
   /* ---------- Schaden antippen (Panel 1) ---------- */
-  var PINS = [], pc = -1, pinsEl = $('.pins'), pe = $('.pin-edit'), rp = $('.report'), rpList = $('.rp-list'), rpN = $('.rp-n'), rpEmpty = $('.rp-empty'), peText = $('.pe-text');
+  var PINS = [{ fx: .645, fy: .6, txt: 'Delle Tür hinten rechts' }, { fx: .555, fy: .575, txt: 'Kratzer Kotflügel hinten' }, { fx: .505, fy: .71, txt: 'Stoßfänger eingedrückt' }], pc = -1, pinsEl = $('.pins'), pe = $('.pin-edit'), rp = $('.report'), rpList = $('.rp-list'), rpN = $('.rp-n'), rpEmpty = $('.rp-empty'), peText = $('.pe-text');
   function heroOn() { return lastP < .04; }
   function toImg(x, y) { var c = CAMS.p01, n = natOf('p01'); if (!c) return null; return [(x - c.x) / (n[0] * c.s), (y - c.y) / (n[1] * c.s)]; }
   function listHtml() { return PINS.map(function (pn, i) { return '<li><b>' + (i + 1) + '</b><span>' + (pn.txt || 'Kommentar fehlt') + '</span></li>'; }).join(''); }
   function drawPins() {
     pinsEl.innerHTML = '';
-    PINS.forEach(function (pn, i) { var b = document.createElement('button'); b.type = 'button'; b.className = 'pin' + (i === pc ? ' on' : ''); b.textContent = i + 1; b.setAttribute('aria-label', 'Markierung ' + (i + 1) + ': ' + (pn.txt || 'ohne Kommentar'));
+    PINS.forEach(function (pn, i) { var b = document.createElement('button'); b.type = 'button'; b.className = 'pin' + (i === pc ? ' on' : ''); b.textContent = i + 1; b.setAttribute('data-lb', pn.txt || ''); b.setAttribute('aria-label', 'Markierung ' + (i + 1) + ': ' + (pn.txt || 'ohne Kommentar'));
       b.addEventListener('click', function (e) { e.stopPropagation(); edit(i); }); pinsEl.appendChild(b); });
     rpN.textContent = PINS.length; rpEmpty.hidden = PINS.length > 0; rp.classList.toggle('has', PINS.length > 0); rpList.innerHTML = listHtml();
     pinsTick(lastP);
@@ -167,6 +170,7 @@
   peText.addEventListener('input', function () { if (pc >= 0) { PINS[pc].txt = peText.value; rpList.innerHTML = listHtml(); } });
   $('.pe-ok').addEventListener('click', function () { edit(-1); });
   $('.pe-del').addEventListener('click', function () { if (pc >= 0) PINS.splice(pc, 1); edit(-1); });
+  drawPins();
   function pinsTick(p) {
     var o = p < .04; pinsEl.style.opacity = o ? 1 : 0; pinsEl.style.pointerEvents = o ? '' : 'none';
     rp.style.opacity = (1 - seg(p, .02, .045)).toFixed(3); rp.style.visibility = p < .045 ? 'visible' : 'hidden';
