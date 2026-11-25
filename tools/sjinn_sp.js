@@ -7,7 +7,7 @@ SP.click = async (t, w = 700) => { const b = SP.btn(t); if (!b) return false; b.
 SP.bar = () => [...document.querySelectorAll('button')].map(b => b.innerText.trim()).filter(t => /GPT|Nano|1:1|16:9|9:16|3:4|4:3|auto|1K|2K|4K|Unlimited|credits/.test(t)).join(' | ');
 SP.setup = async () => {
   if (!/Unlimited · On/.test(SP.bar())) { await SP.click('Unlimited'); const o = [...document.querySelectorAll('*')].find(e => e.children.length === 0 && e.innerText && e.innerText.trim() === 'No credits consumed'); if (o) { o.click(); await SP.sleep(700); } }
-  await SP.click('Aspect ratio'); await SP.click('16:9'); await SP.click('Resolution'); await SP.click('4K resolution'); return SP.bar();
+  await SP.click('Aspect ratio'); await SP.click('16:9'); await SP.click('Resolution'); await SP.click('2K resolution'); return SP.bar();
 };
 SP.clearRefs = async () => { for (let k = 0; k < 6; k++) { const b = [...document.querySelectorAll('button')].find(b => /^Remove Image/.test(b.getAttribute('aria-label') || '')); if (!b) break; b.click(); await SP.sleep(500); } };
 SP.dlgImgs = async () => { if (!document.querySelector('[role=dialog]')) await SP.click('Add reference images', 1500); const d = document.querySelector('[role=dialog]'); return d ? [...d.querySelectorAll('img')].map(i => i.src) : []; };
@@ -31,7 +31,7 @@ SP.run = async queue => {
     const j = queue[SP.q.i];
     if (!j.prepared) { await SP.clearRefs(); const r = await SP.setRef(j.ref); SP.q.log.push(j.id + ' ref ' + r); if (!/applied Use 1 /.test(r)) { SP.q.msg = 'STOP ref ' + j.id + ' ' + r; return; } j.prepared = true; }
     const bar = SP.bar();
-    if (!/Unlimited · On/.test(bar) || !/0 credits/.test(bar) || !bar.includes('16:9') || !bar.includes('4K')) { SP.q.msg = 'STOP bar ' + bar; return; }
+    if (!/Unlimited · On/.test(bar) || !/0 credits/.test(bar) || !bar.includes('16:9') || !bar.includes('2K')) { SP.q.msg = 'STOP bar ' + bar; return; }
     setv(''); await SP.sleep(300); setv(j.prompt); await SP.sleep(900);
     const l0 = SP.limN; const gb = [...document.querySelectorAll('button')].find(b => b.innerText.trim() === 'Generate'); if (gb) gb.click(); await SP.sleep(8000);
     if (SP.limN > l0) { SP.q.msg = j.id + ' LIMIT ' + new Date().toLocaleTimeString(); await SP.sleep(60000); continue; }
