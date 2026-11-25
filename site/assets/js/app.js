@@ -29,7 +29,7 @@
   // Sichtbarkeit: [an-start, an-ende, aus-start, aus-ende]
   var HAS_A = !!VID.a, HAS_B = !!VID.b;
   var L = {
-    d01: { vis: [-1, -1, .10, .16], cam: [[0, .56, .52, 1], [.10, .52, .53, 1.08], [.16, .48, .53, 1.22]] },
+    d01: { vis: [-1, -1, .10, .16], cam: [[0, .655, .545, 1], [.04, .655, .545, 1.02], [.10, .56, .53, 1.08], [.16, .48, .53, 1.22]] },
     d02: { vis: [.11, .16, .21, .25], cam: [[.11, .5, .56, 1.04], [.16, .47, .57, 1.12], [.25, .455, .583, 3.1]] },
     d03: { vis: [.205, .25, .275, .30], cam: [[.205, .58, .62, 1.9], [.25, .58, .63, 1.15], [.30, .58, .64, 1]] },
     d04: { vis: [.272, .29, .382, .398], cam: [[.265, .55, .63, 1.92], [.31, .56, .5, 1.04], [.36, .56, .5, 1.08], [.40, .55, .63, 1.92]] },
@@ -66,7 +66,8 @@
   function mediaOf(k) { return k === 'vA' ? vids.a.v : k === 'vB' ? vids.b.v : $('img', lys[k]); }
 
   // Zielpunkt auf dem Schirm: Desktop rechts (Text links), Handy hochkant oben-mittig (Text unten)
-  function target() { return MOB ? (PORT ? [.5, .36] : [.66, .5]) : [.62, .52]; }
+  // Hero (Storyboard-Panel 1): Auto mittig; danach wandert es nach rechts, damit links der Text Platz hat
+  function target(p) { var a = MOB ? (PORT ? [.5, .36] : [.66, .5]) : [.62, .52], c = MOB ? (PORT ? [.5, .34] : [.5, .5]) : [.56, .62], t = eio(seg(p || 0, .04, .12)); return [lerp(c[0], a[0], t), lerp(c[1], a[1], t)]; }
 
   // Kamera-Zustand je Ebene berechnen
   function camAt(k, p) {
@@ -78,8 +79,10 @@
   var CAMS = {};
   function place(k, p) {
     if (!L[k]) return;
-    var n = natOf(k), iw = n[0], ih = n[1], s0 = MOB && PORT ? 1.6 * W / iw : Math.max(W / iw, H / ih), c = camAt(k, p), z = c[2], s = s0 * z;
-    var t = target(), dw = iw * s, dh = ih * s;
+    var n = natOf(k), iw = n[0], ih = n[1], s0 = MOB && PORT ? 1.6 * W / iw : Math.max(W / iw, H / ih), c = camAt(k, p), z = c[2];
+    if (k === 'd01' && !MOB) z *= lerp(1.25, 1, eio(seg(p, .04, .12))); // Hero: Auto groß und mittig
+    var s = s0 * z;
+    var t = target(p), dw = iw * s, dh = ih * s;
     var x = t[0] * W - c[0] * dw, y = t[1] * H - c[1] * dh;
     x = dw > W ? clamp(x, W - dw, 0) : (W - dw) / 2; y = dh > H ? clamp(y, H - dh, 0) : clamp(y, Math.min(0, H - dh), Math.max(0, H - dh));
     CAMS[k] = { x: x, y: y, s: s };
@@ -300,6 +303,41 @@
   if (qp > 0 && qp <= 1) { scrollTo(0, fahrt.offsetTop + qp * (fahrt.offsetHeight - H)); readScroll(); cur = want; t0 = -1e5; }
   requestAnimationFrame(frame);
 
+
+  /* ---------- Schaden selbst markieren (Hero) ---------- */
+  var PINS = [], pc = -1, pinsEl = $('.pins'), pe = $('.pin-edit'), rp = $('.report'), rpList = $('.rp-list'), rpN = $('.rp-n'), rpEmpty = $('.rp-empty'), peText = $('.pe-text');
+  function heroOn() { return lastP < .035; }
+  function toImg(x, y) { var c = CAMS.d01, n = natOf('d01'); if (!c) return null; return [(x - c.x) / (n[0] * c.s), (y - c.y) / (n[1] * c.s)]; }
+  function drawPins() {
+    pinsEl.innerHTML = '';
+    PINS.forEach(function (pn, i) { var pt = scr('d01', pn.fx, pn.fy), b = document.createElement('button');
+      b.type = 'button'; b.className = 'pin' + (i === pc ? ' on' : ''); b.style.left = pt[0] + 'px'; b.style.top = pt[1] + 'px'; b.textContent = i + 1; b.setAttribute('aria-label', 'Markierung ' + (i + 1) + ': ' + (pn.txt || 'ohne Kommentar'));
+      b.addEventListener('click', function (e) { e.stopPropagation(); edit(i); }); pinsEl.appendChild(b); });
+    rpN.textContent = PINS.length; rpEmpty.hidden = PINS.length > 0;
+    rpList.innerHTML = PINS.map(function (pn, i) { return '<li><b>' + (i + 1) + '</b><span>' + (pn.txt || 'Kommentar fehlt') + '</span></li>'; }).join('');
+    rp.classList.toggle('has', PINS.length > 0);
+  }
+  function edit(i) {
+    pc = i; drawPins(); if (i < 0) { pe.hidden = true; return; }
+    var pt = scr('d01', PINS[i].fx, PINS[i].fy), w = Math.min(300, W - 32);
+    pe.style.left = clamp(pt[0] - w / 2, 16, W - w - 16) + 'px'; pe.style.top = clamp(pt[1] + 26, 70, H - 230) + 'px'; pe.style.width = w + 'px';
+    peText.value = PINS[i].txt || ''; pe.hidden = false;
+    $$('.pe-chips button').forEach(function (c) { c.classList.toggle('on', (PINS[i].txt || '').indexOf(c.textContent) === 0); });
+  }
+  stage.addEventListener('click', function (e) {
+    if (!heroOn() || e.target.closest('button,a,input,.pin-edit,.report,.tx,.nav')) return;
+    var r = stage.getBoundingClientRect(), q = toImg(e.clientX - r.left, e.clientY - r.top);
+    if (!q || q[0] < .3 || q[0] > .98 || q[1] < .2 || q[1] > .82) return; // nur aufs Auto
+    PINS.push({ fx: q[0], fy: q[1], txt: '' }); edit(PINS.length - 1);
+  });
+  $$('.pe-chips button').forEach(function (c) { c.addEventListener('click', function () { if (pc < 0) return; var rest = peText.value.replace(/^(Delle|Kratzer|Riss|Scheibe|Licht|Stoßfänger)(, )?/, ''); peText.value = c.textContent + (rest ? ', ' + rest : ''); PINS[pc].txt = peText.value; drawPins(); edit(pc); }); });
+  peText.addEventListener('input', function () { if (pc >= 0) { PINS[pc].txt = peText.value; drawPins(); } });
+  $('.pe-ok').addEventListener('click', function () { edit(-1); });
+  $('.pe-del').addEventListener('click', function () { if (pc >= 0) PINS.splice(pc, 1); edit(-1); });
+  function fillPins() { var box = $('.mm-pins', dm); box.innerHTML = PINS.length ? '<p class="small">Ihre Markierungen</p><ol>' + PINS.map(function (pn) { return '<li>' + (pn.txt || 'Kommentar fehlt') + '</li>'; }).join('') + '</ol>' : ''; }
+  function pinsTick() { var o = heroOn(); pinsEl.style.opacity = o ? 1 : 0; pinsEl.style.pointerEvents = o ? '' : 'none'; rp.style.opacity = (1 - seg(lastP, .015, .035)).toFixed(3); rp.style.visibility = lastP < .035 ? 'visible' : 'hidden'; if (!o && !pe.hidden) edit(-1); if (o && PINS.length) { PINS.forEach(function (pn, i) { var b = pinsEl.children[i]; if (!b) return; var pt = scr('d01', pn.fx, pn.fy); b.style.left = pt[0] + 'px'; b.style.top = pt[1] + 'px'; }); } }
+  (function loop() { pinsTick(); requestAnimationFrame(loop); })();
+
   /* 130-%-Check: Reparatur oder wirtschaftlicher Totalschaden (BGH-Rechtsprechung, Bruttoreparaturkosten zu Wiederbeschaffungswert) */
   var T130 = { 60: 'Reparatur lohnt sich: Die Kosten liegen klar unter dem Wiederbeschaffungswert. Dazu kommen Wertminderung und Nutzungsausfall.', 115: '130-%-Regel: Reparieren ist erlaubt, wenn fachgerecht nach Gutachten repariert wird und Sie das Auto weiter nutzen. Der Gegner zahlt.', 145: 'Wirtschaftlicher Totalschaden: Sie bekommen Wiederbeschaffungswert minus Restwert. Den Restwert belegen wir mit echten Angeboten.' };
   $$('.t130 button').forEach(function (b) { b.addEventListener('click', function () { $$('.t130 button').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); }); var o = $('.t130-out'); if (o) o.textContent = T130[b.getAttribute('data-r')]; }); });
@@ -316,9 +354,13 @@
   var dm = $('#m-melden'), HINT = { gegner: 'Gut zu wissen: Sie wählen den Gutachter, die gegnerische Versicherung zahlt.', teil: 'Wir klären mit Ihnen, wer zahlt, bevor Kosten entstehen.', ich: 'Auch für Kasko-Schäden erstellen wir Gutachten.' };
   function hintU() { var v = ($('input[name=s]:checked', dm) || {}).value; $('[data-hint]', dm).textContent = HINT[v] || ''; }
   $$('input[name=s]', dm).forEach(function (r) { r.addEventListener('change', hintU); });
-  $$('[data-open="melden"]').forEach(function (b) { b.addEventListener('click', function () { dm.showModal(); hintU(); }); });
+  $$('[data-open="melden"]').forEach(function (b) { b.addEventListener('click', function () { fillPins(); dm.showModal(); hintU(); }); });
   $('.shot input', dm).addEventListener('change', function () { var box = $('.thumbs', dm); box.innerHTML = ''; Array.prototype.slice.call(this.files, 0, 8).forEach(function (f) { var i = new Image(); i.alt = 'Ihr Foto'; i.src = URL.createObjectURL(f); box.appendChild(i); }); });
-  dm.addEventListener('close', function () { if (dm.returnValue === 'ok') toast('Demo: Meldung wäre jetzt beim Gutachter. Rückruf in 15 Minuten.'); });
+  // Abschicken zuerst, danach direkt anrufen: Der Gutachter hat die Meldung schon im Postfach
+  var mf = $('form', dm), done = $('.done', dm);
+  mf.addEventListener('submit', function (e) { if (e.submitter && e.submitter.value === 'x') return; e.preventDefault(); mf.hidden = true; done.hidden = false; });
+  $('.mm-close', dm).addEventListener('click', function () { dm.close(); });
+  dm.addEventListener('close', function () { mf.hidden = false; done.hidden = true; });
 
   /* 60-Sekunden-Bewerbung */
   var db = $('#m-bewerben'), qs = $$('.q', db), secs = 60, tmr = null;

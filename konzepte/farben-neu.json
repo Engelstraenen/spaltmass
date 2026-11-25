@@ -1,0 +1,20 @@
+[
+ {
+  "id": "SPF-1",
+  "file": "f1-lichtgrau",
+  "ref": "SPD-01",
+  "prompt": "SPF-1. Edit the reference image. Keep EXACTLY the same: camera, framing, perspective, the damaged silver estate car with all its dents and scrapes, the round turntable, the car position and size, the light direction and the reflections on the car. Change ONLY the photo studio background wall and floor: a bright, clean, light grey daylight inspection studio (#e8eaec), seamless light grey cyclorama wall, light grey polished concrete floor with soft reflections, the turntable is light grey, soft even daylight, airy and precise like a modern technical test centre. No text, no logos, no people, photorealistic, ultra sharp, 16:9."
+ },
+ {
+  "id": "SPF-2",
+  "file": "f2-schiefer",
+  "ref": "SPD-01",
+  "prompt": "SPF-2. Edit the reference image. Keep EXACTLY the same: camera, framing, perspective, the damaged silver estate car with all its dents and scrapes, the round turntable, the car position and size, the light direction and the reflections on the car. Change ONLY the photo studio background wall and floor: a deep cool slate grey studio (#1e252b), seamless dark slate wall with a very subtle vertical gradient, dark slate polished floor with crisp reflections, the turntable is matte dark slate, a faint warm coral rim light (#ff6b57) on the car edges. No text, no logos, no people, photorealistic, ultra sharp, 16:9."
+ },
+ {
+  "id": "SPF-3",
+  "file": "f3-sand",
+  "ref": "SPD-01",
+  "prompt": "SPF-3. Edit the reference image. Keep EXACTLY the same: camera, framing, perspective, the damaged silver estate car with all its dents and scrapes, the round turntable, the car position and size, the light direction and the reflections on the car. Change ONLY the photo studio background wall and floor: a warm sand-coloured studio (#ece4d6), seamless warm sand wall, warm sand polished floor with soft reflections, the turntable is a darker sand tone, soft warm daylight from above. No text, no logos, no people, photorealistic, ultra sharp, 16:9."
+ }
+]

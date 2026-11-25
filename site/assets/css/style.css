@@ -280,3 +280,52 @@ dialog::backdrop{background:rgba(8,5,10,.7);backdrop-filter:blur(4px)}
 .t130 button.on,.t130 button:hover{border-color:var(--or);color:var(--or)}
 .t130-out{margin-top:12px;font-size:15px;color:var(--ink);max-width:34em;min-height:3em;border-left:2px solid var(--or);padding-left:12px}
 @media (max-width:899px){.t130-out{font-size:14px;min-height:0}}
+
+/* ---------- Schaden selbst markieren (Hero) ---------- */
+.pins{position:absolute;inset:0;z-index:6;pointer-events:none;transition:opacity .3s}
+.pin{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--or);color:var(--on-or);font:700 15px/34px var(--f-b);text-align:center;box-shadow:0 0 0 6px rgba(var(--or-rgb),.25),0 6px 18px rgba(0,0,0,.4);pointer-events:auto;animation:pinin .35s cubic-bezier(.2,1.4,.4,1)}
+.pin.on{box-shadow:0 0 0 8px rgba(var(--or-rgb),.45),0 6px 18px rgba(0,0,0,.4)}
+@keyframes pinin{from{transform:scale(0)}to{transform:scale(1)}}
+.pin-edit{position:absolute;z-index:8;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.pe-h{font-weight:600;font-size:15px;margin-bottom:10px}
+.pe-chips{display:flex;flex-wrap:wrap;gap:6px}
+.pe-chips button{min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:999px;font-size:14px}
+.pe-chips button.on,.pe-chips button:hover{border-color:var(--or);color:var(--or)}
+.pe-text{width:100%;min-height:44px;margin-top:10px;padding:0 12px;background:transparent;border:1px solid var(--line);border-radius:6px;color:var(--ink);font-size:16px}
+.pe-act{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.pe-del{min-height:44px;font-size:14px;color:var(--mut)}
+.report{position:absolute;z-index:7;right:var(--gut);top:50%;transform:translateY(-50%);width:300px;background:rgba(var(--bg-rgb),.72);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:12px;padding:18px}
+.rp-h{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:15px}
+.rp-n{min-width:30px;height:30px;border-radius:15px;background:rgba(var(--or-rgb),.15);color:var(--or);display:grid;place-items:center;font-size:14px}
+.report.has .rp-n{background:var(--or);color:var(--on-or)}
+.rp-list{list-style:none;margin:12px 0 0;display:grid;gap:8px;max-height:30vh;overflow:auto}
+.rp-list li{display:flex;gap:10px;font-size:14px;align-items:baseline}
+.rp-list b{color:var(--or);min-width:16px}
+.rp-empty{font-size:14px;color:var(--mut);margin-top:10px}
+.rp-act{display:grid;gap:8px;margin-top:14px}
+.rp-act .btn{width:100%}
+.mm-pins ol{margin:6px 0 0 20px;font-size:14px}
+.done{display:flex;flex-direction:column;gap:14px}
+.done .btn{width:100%}
+/* Google-Bewertungen */
+.gcard{display:inline-block;border:1px solid var(--line);border-radius:12px;padding:16px 20px;background:rgba(255,255,255,.03)}
+.g-brand{font:600 22px/1 Arial,Helvetica,sans-serif;letter-spacing:-.01em;margin-bottom:8px}
+.g-brand small{font:500 14px/1 var(--f-b);color:var(--mut);margin-left:6px}
+.g-meta{font-size:14px;color:var(--mut);margin-top:8px}
+.g-meta a{color:var(--or);padding:12px 0}
+@media (max-width:899px){
+  .report{top:auto;bottom:calc(12px + env(safe-area-inset-bottom));left:16px;right:16px;width:auto;transform:none;padding:12px 14px}
+  .rp-list,.rp-empty{display:none}
+  .rp-act{grid-template-columns:1fr 1fr;margin-top:10px}
+  .tx-hero{bottom:calc(150px + env(safe-area-inset-bottom))}
+  .pin-edit{padding:12px}
+}
+@media (max-width:899px) and (orientation:landscape){.report{left:auto;width:300px;bottom:10px}.tx-hero{bottom:auto}}
+/* Hero Desktop: Text oben, Auto mittig darunter, Meldeliste unten links (nichts verdeckt das Auto) */
+@media (min-width:900px){
+  .tx-hero{top:92px;transform:none;width:min(1200px,calc(100% - 2*var(--gut)))}
+  .tx-hero h1{font-size:clamp(40px,4.2vw,68px)}
+  .tx-hero h1 br{display:none}
+  .tx-hero .lead{max-width:46em}
+  .report{top:auto;bottom:28px;left:var(--gut);right:auto;transform:none;width:300px}
+}
