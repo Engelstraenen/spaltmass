@@ -1,0 +1,58 @@
+[
+ {
+  "id": "PS-01",
+  "file": "p01-eingang",
+  "res": "4K",
+  "ref": "SB7B",
+  "use": "Hero + First Frame Film 1",
+  "prompt": "PS-01. Use the reference storyboard only for the look (panel 1), make ONE single full-frame photograph, no grid, no UI. Cinematic photo, 16:9: a modern, clean, dark slate grey (#1e252b) vehicle inspection tunnel, matte dark slate walls and ceiling, polished dark floor with soft reflections, thin coral (#ff6b57) LED light lines along the floor edges and around the tunnel portal. the same modern silver-grey metallic five-door estate car (station wagon), completely unbranded, no badges, no logos, no emblems, blank license plate, damaged on its RIGHT side only: a deep dent with a sharp horizontal crease in the rear right door, a crumpled front right fender with scraped paint, a scraped rear right bumper corner, stands perfectly centered in the frame at the glowing entrance of the tunnel, seen from behind at a slight angle from the rear right so the damaged right side is clearly visible, the car fills about 45 percent of the frame width, lots of calm dark slate space above and around for text, inside the tunnel ahead rows of tall white LED stripe light panels are still dim. Camera at eye level behind the car, 35mm. No people. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no text, no letters, no logos, no watermarks, no UI, no clichés, NO tape measure, NO caliper, NO folding ruler."
+ },
+ {
+  "id": "PS-03",
+  "file": "p03-streifenlicht",
+  "res": "4K",
+  "ref": "PS-01",
+  "use": "Kapitel Vermessen (Panel 3), Zoom",
+  "prompt": "PS-03. Use the reference image for the exact same car, damage and tunnel style. The car now stands inside the tunnel, seen from the rear right at the same height, the tunnel walls and ceiling are lined with dense parallel bright white LED stripe light bars, their straight stripe reflections run across the glossy silver body and bend, wobble and break exactly at the dent in the rear right door, the crumpled front right fender and the scraped rear bumper corner, making every dent clearly visible. Thin coral accent lines on the floor. 16:9, 35mm. No people. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no text, no letters, no logos, no watermarks, no UI, no clichés, NO tape measure, NO caliper, NO folding ruler."
+ },
+ {
+  "id": "PS-04",
+  "file": "p04-messen",
+  "res": "4K",
+  "ref": "PS-01",
+  "use": "Kapitel Messen (Panel 4), Zoom",
+  "prompt": "PS-04. Close-up photograph inside the same stripe light tunnel, 16:9: the rear right door and rear quarter panel of the same silver estate car. A hand in a black work glove pushes a thin stainless steel gap wedge gauge with an engraved millimetre scale straight into the gap between the rear right door and the rear quarter panel. GRIP: the other gloved hand holds a compact professional digital paint thickness gauge firmly in the whole hand, fingers wrapped around the body, thumb at the side, the round sensor tip pressed flat and perpendicular onto the smooth undamaged rear wheel arch panel, the display shows '118'. The creased dent in the door is visible next to it, white stripe light reflections bend at the dent. Shallow depth of field, 85mm. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no text, no letters, no logos, no watermarks, no UI, no clichés, NO tape measure, NO caliper, NO folding ruler."
+ },
+ {
+  "id": "PS-05",
+  "file": "p05-werte",
+  "res": "4K",
+  "ref": "PS-01",
+  "use": "Kapitel Werte/130 % (Panel 5)",
+  "prompt": "PS-05. Use the reference image for the exact same car and tunnel style. The car stands still in the middle of the tunnel, seen straight from behind, centered, between two tall dark glass display panels standing on the left and right side of the car, the display panels are dark and empty with a faint coral edge glow, coral light lines on the floor lead toward the car. 16:9, 35mm, symmetrical. No people. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no text, no letters, no logos, no watermarks, no UI, no clichés, NO tape measure, NO caliper, NO folding ruler."
+ },
+ {
+  "id": "PS-06",
+  "file": "p06-drucker",
+  "res": "2K",
+  "ref": "PS-01",
+  "use": "Kapitel Gutachten (Panel 6)",
+  "prompt": "PS-06. Photograph of a slim printer slot built into the dark slate tunnel wall with a thin coral light line above it, a long continuous strip of white paper comes out of the slot and curls toward the floor, the paper shows several printed documentation photos of a dented silver car door and neat grey lines like a report, no readable text. Soft light, 50mm, 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no text, no letters, no logos, no watermarks, no UI, no clichés, NO tape measure, NO caliper, NO folding ruler."
+ },
+ {
+  "id": "PS-07",
+  "file": "p07-tageslicht",
+  "res": "4K",
+  "ref": "PS-01",
+  "use": "Ergebnis (Panel 7)",
+  "prompt": "PS-07. Use the reference image for the exact same car and tunnel style. The car, now perfectly repaired with flawless silver paint and no dents, rolls out of the tunnel exit into bright natural daylight, seen from behind and slightly from the rear right, the tunnel exit frame is dark slate with a coral light line, outside a calm modern business district with trees and a clear sky. 16:9, 35mm. No people. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no text, no letters, no logos, no watermarks, no UI, no clichés, NO tape measure, NO caliper, NO folding ruler."
+ },
+ {
+  "id": "PS-08",
+  "file": "p08-karriere",
+  "res": "4K",
+  "ref": "PS-01",
+  "use": "Karriere (Panel 8)",
+  "prompt": "PS-08. Inside the same dark slate tunnel: a confident young woman in her mid twenties, hair tied back, in a modern fitted black work jacket with thin coral piping, stands at a sleek tunnel control desk with screens and holds a rugged tablet, looking at it with a calm focused expression, in the background the silver estate car stands in the stripe light tunnel. She stands in the right half of the frame, the left half is calm and dark for text. Realistic modern assessor workplace, 50mm, shallow depth of field, 16:9. Photorealistic, ultra sharp, full-frame camera, realistic paint and metal, no text, no letters, no logos, no watermarks, no UI, no clichés, NO tape measure, NO caliper, NO folding ruler."
+ }
+]

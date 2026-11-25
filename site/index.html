@@ -4,20 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>SPALTMASS – Kfz-Sachverständige</title>
-<meta name="description" content="Unabhängige Kfz-Sachverständige: Schaden per Handy melden, vor Ort in 24 h, Gutachten in 48 h. Bei unverschuldetem Unfall wählen Sie den Gutachter, die gegnerische Versicherung zahlt.">
-<meta name="theme-color" content="#1d1420">
+<meta name="description" content="Unabhängige Kfz-Sachverständige: Schaden antippen und melden, Gutachter direkt anrufen. Vor Ort in 24 h, Gutachten in 48 h. Bei unverschuldetem Unfall zahlt die gegnerische Versicherung.">
+<meta name="theme-color" content="#1e252b">
 <link rel="preload" href="assets/fonts/grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=22">
+<link rel="stylesheet" href="assets/css/style.css?v=30">
 </head>
 <body>
-<a class="skip" href="#kontakt-panel">Zum Kontakt</a>
+<a class="skip" href="#kontakt">Zum Kontakt</a>
 
 <header class="nav">
   <a class="logo" href="#" data-go="0" aria-label="SPALTMASS, zum Anfang"><b>SPALTMASS</b><span>Kfz-Sachverständige</span></a>
-  <nav class="links" aria-label="Kapitel">
-    <a href="#" data-go="melden">Melden</a>
+  <nav class="links" aria-label="Stationen der Prüfstraße">
     <a href="#" data-go="messen">Messen</a>
-    <a href="#" data-go="recht">Ihr Recht</a>
+    <a href="#" data-go="werte">Werte</a>
     <a href="#" data-go="gutachten">Gutachten</a>
     <a href="#" data-go="karriere">Karriere</a>
     <a href="#" data-go="bewertungen">Bewertungen</a>
@@ -29,56 +28,23 @@
 
 <main id="fahrt">
   <div class="stage" id="stage">
-    <!-- Bildebenen: eine Kamera, ein Auto -->
-    <div class="ly" data-ly="d01"><img alt="Silberner Kombi mit Unfallschaden auf einem Drehteller im Studio" data-src="d01-hero"></div>
-    <div class="ly" data-ly="vA" data-vid="a"></div>
-    <div class="ly" data-ly="d02"><img alt="Der Kombi in Seitenansicht, Delle in der hinteren Tür" data-src="d02-profil"></div>
-    <div class="ly" data-ly="d03"><img alt="Nahaufnahme der Delle in der hinteren rechten Tür" data-src="d03-delle"></div>
-    <div class="ly" data-ly="d04"><img alt="Hand fotografiert die Delle mit dem Smartphone" data-src="d04-handy"></div>
-    <div class="ly" data-ly="d06"><img alt="Dieselbe Tür, perfekt repariert" data-src="d06-repariert-nah"></div>
-    <div class="ly" data-ly="d07"><img alt="Der reparierte Kombi auf dem Drehteller" data-src="d07-repariert"></div>
-    <div class="ly" data-ly="vB" data-vid="b"></div>
-    <div class="ly" data-ly="d08"><img alt="Junge Sachverständige mit Tablet neben dem reparierten Auto" data-src="d08-karriere"></div>
-    <div class="ly" data-ly="d09"><img alt="Der reparierte Kombi von oben auf dem Drehteller" data-src="d09-oben"></div>
+    <!-- Bilder und Film der Prüfstraße (Storyboard SPSB-7B) -->
+    <div class="ly" data-ly="p01"><img alt="Unfallauto am Eingang des Prüftunnels" data-src="p01-eingang"></div>
+    <div class="ly" data-ly="v1" data-vid="v1"></div>
+    <div class="ly" data-ly="p04"><img alt="Gutachter misst Spaltmaß und Lackschicht" data-src="p04-messen"></div>
+    <div class="ly" data-ly="p05"><img alt="Auto zwischen zwei Anzeigetafeln im Tunnel" data-src="p05-werte"></div>
+    <div class="ly" data-ly="p06"><img alt="Gutachten kommt aus dem Drucker in der Tunnelwand" data-src="p06-drucker"></div>
+    <div class="ly" data-ly="p07"><img alt="Repariertes Auto fährt aus dem Tunnel ins Tageslicht" data-src="p07-tageslicht"></div>
+    <div class="ly" data-ly="p08"><img alt="Junge Sachverständige am Leitstand mit Tablet" data-src="p08-karriere"></div>
     <div class="shade"></div>
+    <div class="flash" aria-hidden="true"></div>
 
-    <canvas class="grid" aria-hidden="true"></canvas>
-    <svg class="ring" aria-hidden="true"><ellipse class="ring-b" /><ellipse class="ring-f" /></svg>
-
-    <!-- Marker an den Schäden -->
-    <div class="mk" data-mk="1"><i></i><span>01<em> · Delle Tür hinten</em></span></div>
-    <div class="mk" data-mk="2"><i></i><span>02<em> · Kotflügel vorn</em></span></div>
-    <div class="mk" data-mk="3"><i></i><span>03<em> · Stoßfänger</em></span></div>
-
-    <!-- Handy-Sucher -->
-    <div class="finder" aria-hidden="true"><b></b><b></b><b></b><b></b><div class="up"><span>Foto <em data-up>0</em>/6 gesendet</span><i></i></div></div>
-
-    <!-- Doku-Bild, das aus dem Gutachten vollflächig wird -->
-    <div class="fly" aria-hidden="true"><img alt="" data-src="d03-delle"></div>
-    <div class="wipe" aria-hidden="true"><i></i></div>
-
-    <!-- Brief / Gutachten -->
-    <div class="doc" aria-hidden="true">
-      <div class="pg pg3"></div><div class="pg pg2"></div>
-      <div class="pg pg1">
-        <div class="dh"><b>SPALTMASS</b><span>Kfz-Sachverständige</span></div>
-        <dl class="dm"><dt>Gutachten</dt><dd>Nr. 2611-0417</dd><dt>Auftraggeber</dt><dd>Geschädigte Partei</dd><dt>Fahrzeug</dt><dd>Kombi, silber</dd></dl>
-        <div class="lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="rep">
-          <img alt="" data-src="d05-doku">
-          <ul class="chk"><li>Reparaturkosten</li><li>Wertminderung</li><li>Nutzungsausfall</li><li>Restwert</li></ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Texte je Kapitel -->
-    <section class="tx tx-hero" data-tx="hero" id="start">
+    <!-- Panel 1: Schaden antippen -->
+    <section class="tx tx-hero" data-tx="hero" id="melden">
       <p class="kick">Unabhängige Kfz-Sachverständige</p>
-      <h1>Jede Delle <br>erzählt den Unfall.</h1>
-      <p class="lead">Tippen Sie aufs Auto, wo es kaputt ist. Kurz beschreiben, abschicken, anrufen. Vor Ort in 24&nbsp;h, Gutachten in 48&nbsp;h.</p>
+      <h1>Tippen Sie auf den Schaden.</h1>
+      <p class="lead">Kurz beschreiben, abschicken, anrufen. Der Gutachter hat alles schon im Postfach.</p>
     </section>
-
-    <!-- Schaden selbst markieren: Tippen aufs Auto setzt eine Markierung mit Kommentar -->
     <div class="pins" aria-live="polite"></div>
     <div class="pin-edit" role="dialog" aria-label="Schaden beschreiben" hidden>
       <p class="pe-h">Was ist hier kaputt?</p>
@@ -86,65 +52,66 @@
       <input type="text" class="pe-text" placeholder="Eigener Kommentar, z. B. Tür klemmt" aria-label="Kommentar zum Schaden">
       <div class="pe-act"><button type="button" class="pe-del">Entfernen</button><button type="button" class="btn pe-ok">Fertig</button></div>
     </div>
-    <aside class="report" aria-label="Ihre Schadensmeldung">
-      <p class="rp-h"><span>Ihre Schadensmeldung</span><b class="rp-n">0</b></p>
+    <aside class="report" aria-label="Ihre Meldung">
+      <p class="rp-h"><span>Ihre Meldung</span><b class="rp-n">0</b></p>
       <ol class="rp-list"></ol>
-      <p class="rp-empty">Noch nichts markiert. Tippen Sie aufs Auto.</p>
-      <div class="rp-act"><button class="btn rp-send" data-open="melden">Schaden abschicken</button><a class="btn ghost rp-call" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a></div>
+      <p class="rp-empty">Tippen Sie aufs Auto, wo es kaputt ist.</p>
+      <div class="rp-act"><button class="btn rp-send" data-open="melden">Schaden abschicken</button><a class="btn ghost" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a></div>
     </aside>
 
-    <section class="tx tx-orbit" data-tx="orbit"><p class="kick">Drehen Sie mit</p><h2>Drei Schäden.<br>Drei Spuren.</h2><p class="lead">Wir umrunden jedes Auto und gehen jedem Kratzer nach. Fangen wir bei der Tür an.</p></section>
-
-    <section class="tx tx-melden" data-tx="melden" id="melden">
-      <p class="kick">01 · Schaden melden</p>
-      <h2>Sechs Fotos.<br>Zwei Minuten.</h2>
-      <p class="lead">Fotos direkt vom Unfallort schicken. Wir rufen in 15&nbsp;Minuten zurück und kommen innerhalb von 24&nbsp;h zu Ihnen. Kein Telefon-Pingpong.</p>
-      <div class="btns"><button class="btn" data-open="melden">Fotos senden</button><a class="btn ghost more" href="melden.html">Foto-Guide &amp; Bagatell-Check</a></div>
-    </section>
-
-    <section class="tx tx-messen" data-tx="messen" id="messen">
-      <p class="kick">02 · Vermessen</p>
+    <!-- Panel 3: Streifenlicht -->
+    <section class="tx tx-licht" data-tx="licht" id="messen">
+      <p class="kick">01 · Sehen</p>
       <h2>Jeder Millimeter.</h2>
-      <p class="lead">Wir messen Verformung und Spaltmaße und prüfen die Lackschicht an den heilen Teilen. So finden wir auch Vorschäden und den Schaden hinter dem Schaden.</p>
-      <ul class="reads">
-        <li><b data-count="4.2" data-dec="1">0</b><span>mm Tiefe der Delle</span></li>
-        <li><b data-count="6.1" data-dec="1">0</b><span>mm Spaltmaß · Soll 3,8</span></li>
-        <li><b data-count="118">0</b><span>µm Lack an heilen Teilen</span></li>
-      </ul>
+      <p class="lead">Im Streifenlicht knicken die Lichtlinien genau dort ab, wo das Blech verbeult ist. So sehen wir jede Delle, auch die kleinen.</p>
+    </section>
+    <ul class="wall" aria-hidden="true"><li>Sehen</li><li>Messen</li><li>Bewerten</li><li>Für Ihre Sicherheit</li></ul>
+
+    <!-- Panel 4: Messen -->
+    <section class="tx tx-messen" data-tx="messen">
+      <p class="kick">02 · Messen</p>
+      <h2>Spaltmaß und Lack.</h2>
+      <p class="lead">Spaltmaßlehre in die Fuge, Lackschicht-Messgerät auf die heilen Teile. Weicht eine Seite ab oder ist der Lack zu dick, finden wir Vorschäden.</p>
+      <ul class="reads"><li><b data-count="6.1" data-dec="1">0</b><span>mm Spaltmaß rechts · links 3,8</span></li><li><b data-count="118">0</b><span>µm Lack an heilen Teilen · Serie</span></li></ul>
       <div class="btns"><a class="btn ghost more" href="messen.html">So messen wir</a></div>
     </section>
 
-    <section class="tx tx-recht" data-tx="recht" id="recht">
-      <p class="kick">03 · Ihr Recht</p>
-      <h2 class="kin"><span>Ihr Gutachter.</span><span>Ihre Wahl.</span><span class="ac">Gegner zahlt.</span></h2>
-      <ul class="facts">
-        <li>Unverschuldeter Unfall: Sie wählen den Sachverständigen, nicht die Versicherung.</li>
-        <li>Die Kosten trägt die gegnerische Haftpflichtversicherung, bei Schäden über der Bagatellgrenze.</li>
-        <li>Unabhängig und nur Ihrem Schaden verpflichtet.</li>
-      </ul>
-      <div class="btns"><a class="btn ghost more" href="recht.html">Haftpflicht, Kasko, Leasing, Oldtimer</a></div>
+    <!-- Panel 5: Werte + 130 % -->
+    <div class="screens" aria-hidden="true">
+      <div class="scr scr-l"><p>Wiederbeschaffungswert</p><i style="--v:.86"></i><p>Reparaturkosten</p><i class="hl" style="--v:.62"></i><p>Restwert</p><i style="--v:.22"></i></div>
+      <div class="scr scr-r"><p>130-%-Regel</p><svg viewBox="0 0 120 70"><path class="g-b" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-f" d="M10 62 A50 50 0 0 1 110 62" pathLength="100"/></svg><b class="g-v">0 %</b></div>
+    </div>
+    <section class="tx tx-werte" data-tx="werte" id="werte">
+      <p class="kick">03 · Bewerten</p>
+      <h2>Reparieren oder ersetzen?</h2>
+      <p class="lead">Reparaturkosten im Verhältnis zum Wiederbeschaffungswert. Tippen Sie einen Fall an:</p>
+      <div class="t130" role="group" aria-label="130-Prozent-Check"><button data-r="60">60 %</button><button data-r="115">115 %</button><button data-r="145">145 %</button></div>
+      <p class="t130-out" aria-live="polite">Unverschuldet? Sie wählen den Gutachter, die gegnerische Versicherung zahlt.</p>
+      <div class="btns"><a class="btn ghost more" href="recht.html">Ihr Recht: Haftpflicht, Kasko, Leasing</a></div>
     </section>
 
+    <!-- Panel 6: Gutachten aus dem Drucker -->
+    <div class="strip" aria-hidden="true"><div class="paper"><b>SPALTMASS · Gutachten Nr. 2611-0417</b><img alt="" data-src="d03-delle"><img alt="" data-src="d05-doku"><ul><li>Reparaturkosten</li><li>Wertminderung</li><li>Nutzungsausfall</li><li>Restwert</li></ul></div></div>
     <section class="tx tx-gutachten" data-tx="gutachten" id="gutachten">
       <p class="kick">04 · Gutachten</p>
-      <h2>Gutachten<br>in 48&nbsp;h.</h2>
-      <p class="lead">Mit Fotos, Maßen und Kalkulation. Digital an Sie, Ihre Werkstatt und Ihren Anwalt.</p>
-      <div class="mini" aria-label="Durchschnittlicher Sachschaden Kfz-Haftpflicht laut GDV"><p>Ø Sachschaden je Pkw, Kfz-Haftpflicht</p>
-        <div><span>2013</span><i style="--v:.59"></i><b>2.500 €</b></div><div><span>2017</span><i style="--v:.64"></i><b>2.700 €</b></div><div><span>2023</span><i style="--v:.94"></i><b>4.000 €</b></div><div><span>2024</span><i style="--v:1"></i><b>4.250 €</b></div>
-        <small>Quelle: GDV (gerundet)</small></div>
+      <h2>Gutachten in 48 h.</h2>
+      <p class="lead">Mit Fotos, Messwerten und Kalkulation. Digital an Sie, Ihre Werkstatt und Ihren Anwalt.</p>
       <div class="btns"><a class="btn ghost more" href="gutachten.html">Rechner: Was steht mir zu?</a></div>
     </section>
 
-    <section class="tx tx-wie" data-tx="wie"><p class="kick">05 · Ergebnis</p><h2>Wie neu.<br>Und belegt.</h2><p class="lead">Repariert nach Gutachten, jeder Schritt dokumentiert. Auch die Wertminderung bekommen Sie bezahlt.</p><p class="lackq">Reparieren oder ersetzen? Reparaturkosten im Verhältnis zum Wiederbeschaffungswert:</p><div class="t130" role="group" aria-label="130-Prozent-Check"><button data-r="60" aria-pressed="false">60 %</button><button data-r="115" aria-pressed="false">115 %</button><button data-r="145" aria-pressed="false">145 %</button></div><p class="t130-out" aria-live="polite">Tippen Sie auf einen Wert.</p></section>
+    <!-- Panel 7: Tageslicht -->
+    <section class="tx tx-wie" data-tx="wie"><p class="kick">05 · Ergebnis</p><h2>Wie neu. Und belegt.</h2><p class="lead">Repariert nach Gutachten. Der Streifenlicht-Test findet nichts mehr.</p></section>
 
+    <!-- Panel 8: Karriere -->
     <section class="tx tx-karriere" data-tx="karriere" id="karriere">
       <p class="kick">06 · Karriere</p>
       <h2 class="kin"><span>Kfz-Profi?</span><span class="ac">Werde Gutachter.</span></h2>
-      <ul class="perks"><li>Weiterbildung zum Sachverständigen, bezahlt</li><li>E-Firmenwagen ab Tag&nbsp;1</li><li>Planbare Termine statt Werkstattschicht</li></ul>
-      <p class="lead small">Für Kfz-Meister, Techniker und Ingenieure.</p>
+      <ul class="perks"><li>Weiterbildung zum Sachverständigen, bezahlt</li><li>E-Firmenwagen ab Tag 1</li><li>Planbare Termine statt Werkstattschicht</li></ul>
       <div class="btns"><button class="btn" data-open="bewerben">In 60 Sekunden bewerben</button><a class="btn ghost more" href="karriere.html">Dein Weg</a></div>
     </section>
 
+    <!-- Panel 9: Handy + Google + Kontakt -->
+    <div class="phone" aria-hidden="true"><div class="ph-scr"><p class="ph-logo">SPALTMASS</p><img alt="" data-src="p01-eingang"><div class="ph-g"><span>Google</span><i>★★★★★</i><small>Beispiel</small></div><b class="ph-btn">Schaden melden</b></div></div>
     <section class="tx tx-bew" data-tx="bewertungen" id="bewertungen">
       <p class="kick">07 · Bewertungen</p>
       <div class="gcard"><p class="g-brand" aria-label="Google"><span style="color:#4285f4">G</span><span style="color:#ea4335">o</span><span style="color:#fbbc05">o</span><span style="color:#4285f4">g</span><span style="color:#34a853">l</span><span style="color:#ea4335">e</span> <small>Bewertungen</small></p>
@@ -152,33 +119,24 @@
         <p class="g-meta"><b data-count="214">0</b> Rezensionen · <a href="#" data-demo="Demo: Hier öffnet sich das echte Google-Profil der Firma.">Auf Google ansehen</a></p></div>
       <p class="demo">Beispiel für Ihre echte Google-Note · Demo-Seite, die Firma ist erfunden</p>
       <div class="quotes" aria-live="polite">
-        <blockquote>„Fotos geschickt, am nächsten Morgen stand der Gutachter vor der Tür.“<cite>Beispiel · noch keine echte Bewertung</cite></blockquote>
+        <blockquote class="on">„Schnell, kompetent und fair. Genau so, wie es sein soll.“<cite>Beispiel · noch keine echte Bewertung</cite></blockquote>
         <blockquote>„Ich wusste nicht, dass ich den Gutachter selbst wählen darf.“<cite>Beispiel · noch keine echte Bewertung</cite></blockquote>
-        <blockquote>„Das Gutachten war nach zwei Tagen bei meiner Werkstatt.“<cite>Beispiel · noch keine echte Bewertung</cite></blockquote>
       </div>
     </section>
-
-    <section class="tx tx-kontakt" data-tx="kontakt" id="kontakt-panel">
+    <section class="tx tx-kontakt" data-tx="kontakt" id="kontakt">
       <p class="kick">08 · Kontakt</p>
-      <h2>Einmal rum.<br>Alles geregelt.</h2>
+      <h2>Vertrauen fährt weiter.</h2>
       <div class="btns"><button class="btn big" data-open="melden">Schaden melden</button><a class="btn ghost big" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a></div>
       <ul class="kfacts"><li><b>24/7</b> erreichbar</li><li><b>24 h</b> vor Ort</li><li><b>48 h</b> Gutachten</li></ul>
       <p class="foot">© SPALTMASS Kfz-Sachverständige (Demo) · <a href="#" data-demo="Demo: Impressum folgt.">Impressum</a> · <a href="#" data-demo="Demo: Datenschutz folgt.">Datenschutz</a></p>
     </section>
 
-    <div class="ticker" aria-hidden="true"><div><span>Beispiel · Schnell vor Ort</span><span>Beispiel · Freundlich</span><span>Beispiel · Gutachten in 2 Tagen</span><span>Beispiel · Alles erklärt</span><span>Beispiel · Versicherung hat gezahlt</span><span>Beispiel · Schnell vor Ort</span><span>Beispiel · Freundlich</span><span>Beispiel · Gutachten in 2 Tagen</span><span>Beispiel · Alles erklärt</span><span>Beispiel · Versicherung hat gezahlt</span></div></div>
-
-    <!-- HUD -->
-    <div class="hud" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
-    <div class="dial" aria-hidden="true">
-      <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" class="dt"/><circle cx="32" cy="32" r="27" class="dp" pathLength="100"/></svg>
-      <div><b data-deg>[ 000° ]</b><span data-ch>Drehteller</span></div>
-    </div>
-    <div class="hint" aria-hidden="true">Scrollen · das Auto dreht sich</div>
+    <div class="prog" aria-hidden="true"><i></i></div>
+    <div class="hint" aria-hidden="true">Scrollen · durch die Prüfstraße</div>
   </div>
 </main>
 
-<!-- Schaden melden -->
+<!-- Schaden melden: abschicken, danach anrufen -->
 <dialog id="m-melden" aria-labelledby="mm-h">
   <form method="dialog" class="mm">
     <button class="x" value="x" aria-label="Schließen">×</button>
@@ -191,7 +149,7 @@
     </fieldset>
     <p class="hinweis" data-hint></p>
     <div class="mm-pins"></div>
-    <label class="shot"><input type="file" accept="image/*" multiple><span>Fotos auswählen</span></label>
+    <label class="shot"><input type="file" accept="image/*" multiple></label>
     <div class="thumbs" aria-live="polite"></div>
     <p class="small">Die Fotos bleiben in dieser Demo auf Ihrem Gerät.</p>
     <input type="text" placeholder="Name" aria-label="Name" autocomplete="name">
@@ -200,14 +158,13 @@
   </form>
   <div class="mm done" hidden>
     <p class="kick">Gemeldet</p>
-    <h3>Ihre Meldung ist beim Gutachter.</h3>
-    <p class="small">Er sieht Ihre Markierungen, Kommentare und Fotos jetzt in seinem Postfach. Rufen Sie direkt an, dann geht er alles mit Ihnen durch.</p>
+    <h3>Der Gutachter hat alles im Postfach.</h3>
+    <p class="small">Ihre Markierungen, Kommentare und Fotos liegen ihm vor. Rufen Sie jetzt an, dann geht er alles mit Ihnen durch.</p>
     <a class="btn big" href="tel:+4900000000" data-demo="Demo: Hier klingelt der Gutachter, Ihre Meldung liegt ihm vor.">Jetzt Gutachter anrufen</a>
     <button class="btn ghost mm-close" type="button">Später</button>
   </div>
 </dialog>
 
-<!-- 60-Sekunden-Bewerbung -->
 <dialog id="m-bewerben" aria-labelledby="mb-h">
   <form method="dialog" class="mm" novalidate>
     <button class="x" value="x" aria-label="Schließen">×</button>
@@ -221,8 +178,8 @@
 </dialog>
 <div class="toast" role="status" hidden></div>
 
-<script src="assets/js/img.js?v=22"></script>
-<script src="assets/js/vid.js?v=20"></script>
-<script src="assets/js/app.js?v=22"></script>
+<script src="assets/js/img.js?v=30"></script>
+<script src="assets/js/vid.js?v=30"></script>
+<script src="assets/js/app.js?v=30"></script>
 </body>
 </html>
