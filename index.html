@@ -7,7 +7,8 @@
 <meta name="description" content="Unabhängige Kfz-Sachverständige: Schaden per Handy melden, vor Ort in 24 h, Gutachten in 48 h. Bei unverschuldetem Unfall wählen Sie den Gutachter, die gegnerische Versicherung zahlt.">
 <meta name="theme-color" content="#1d1420">
 <link rel="preload" href="assets/fonts/grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=20">
+<link rel="stylesheet" href="assets/css/style.css?v=21">
+<link rel="stylesheet" href="assets/css/szene.css?v=21">
 </head>
 <body>
 <a class="skip" href="#kontakt-panel">Zum Kontakt</a>
@@ -26,6 +27,62 @@
   <a class="nav-cta" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a>
   <button class="burger" aria-label="Menü" aria-expanded="false"><i></i><i></i></button>
 </header>
+
+<!-- Bühne nach Vorlage motionsites „Veyra Electric“: Rahmen, Hotspots an den Schäden, Detail-Zoom, Farb-/Vorher-Nachher-Menü -->
+<div id="szene-wrap">
+<section class="experience phase-overview" id="experience" aria-busy="false" aria-label="Unfallauto erkunden">
+  <header class="masthead">
+    <a class="wordmark" href="#" aria-label="SPALTMASS, Übersicht">SPALTMASS</a>
+    <span class="header-middle">Kfz-Sachverständige · unabhängig</span>
+    <a class="concept-label sz-call" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a>
+  </header>
+  <section class="sz-stage" id="szStage" aria-label="Schäden am Unfallauto">
+    <div class="image-plane" id="plane">
+      <div class="media-envelope">
+        <div class="exterior-envelope">
+          <div class="car-visual">
+            <img class="car-image" id="carImage" alt="Silberner Kombi mit Unfallschaden auf einem Drehteller" draggable="false"/>
+            <canvas class="hover-video" id="hoverCanvas" aria-hidden="true"></canvas>
+            <div class="appearance-visual" id="appearanceVisual" aria-hidden="true"><img id="appearanceImage" alt="" draggable="false"/></div>
+          </div>
+        </div>
+        <div class="detail-visual" id="detailVisual"><img class="detail-image" id="detailImage" alt="" draggable="false"/></div>
+      </div>
+      <div id="hotspotLayer"></div>
+      <div id="annotationLayer"></div>
+    </div>
+    <div class="intro" id="intro">
+      <h1>Jede Delle erzählt den Unfall.</h1>
+      <p class="intro-description"><span>Wir lesen ihn für Sie.</span><span>Tippen Sie auf einen Schaden.</span></p>
+    </div>
+    <button class="sz-back" id="backButton" aria-label="Zurück zum Auto" hidden></button>
+    <aside class="detail-copy" id="detailCopy" aria-hidden="true">
+      <div class="detail-introduction">
+        <p class="eyebrow" id="detailCategory"></p>
+        <h2 id="detailTitle"></h2>
+        <p class="system-description" id="detailDescription"></p>
+      </div>
+      <div class="detail-components">
+        <div class="part-list" id="partList"></div>
+        <div class="benefit"><span>Für Sie</span><p id="detailBenefit"></p></div>
+        <a class="sz-more" id="detailMore" href="#">Alles dazu im Detail</a>
+      </div>
+    </aside>
+    <div class="transition-status" id="status" hidden><span class="small-dot"></span><span id="statusText"></span></div>
+  </section>
+  <footer class="scene-footer">
+    <div class="feature-notes" aria-label="Was wir für Sie tun">
+      <div class="feature-note"><h3>24/7 erreichbar</h3><p>Fotos schicken, Rückruf in 15 Minuten. Auch nachts und am Wochenende.</p></div>
+      <div class="feature-note"><h3>Vor Ort in 24 h</h3><p>Wir kommen zu Ihnen nach Hause, zur Arbeit oder in die Werkstatt.</p></div>
+      <div class="feature-note"><h3>Gutachten in 48 h</h3><p>Mit Fotos, Maßen, Wertminderung und Nutzungsausfall.</p></div>
+      <div class="feature-note"><h3>Ihre Wahl</h3><p>Unverschuldet? Sie wählen den Gutachter, der Gegner zahlt.</p></div>
+    </div>
+    <div class="footer-baseline"><span>SPALTMASS — Kfz-Sachverständige</span><span id="footerNote">Tippen Sie auf eine Delle. Oder scrollen Sie: einmal rund ums Auto.</span></div>
+  </footer>
+  <p class="sr-only" role="status" aria-live="polite" id="srStatus">Unfallauto. Wählen Sie einen Schaden.</p>
+  <div class="error-message" id="errorMessage" role="alert" hidden></div>
+</section>
+</div>
 
 <main id="fahrt">
   <div class="stage" id="stage">
@@ -74,7 +131,7 @@
     <!-- Texte je Kapitel -->
     <section class="tx tx-hero" data-tx="hero" id="start">
       <p class="kick">Unabhängige Kfz-Sachverständige</p>
-      <h1>Jede Delle<br>erzählt den Unfall.</h1>
+      <h2>Einmal rund<br>ums Auto.</h2>
       <p class="lead">Wir lesen ihn für Sie. Schaden per Handy melden, vor Ort in 24&nbsp;h, Gutachten in 48&nbsp;h.</p>
       <div class="btns"><button class="btn" data-open="melden">Schaden melden</button><a class="btn ghost" href="tel:+4900000000" data-demo="Demo: Hier klingelt die 24/7-Hotline.">24/7 anrufen</a></div>
     </section>
@@ -197,8 +254,9 @@
 </dialog>
 <div class="toast" role="status" hidden></div>
 
-<script src="assets/js/img.js?v=20"></script>
+<script src="assets/js/img.js?v=21"></script>
 <script src="assets/js/vid.js?v=20"></script>
-<script src="assets/js/app.js?v=20"></script>
+<script src="assets/js/app.js?v=21"></script>
+<script src="assets/js/szene.js?v=21"></script>
 </body>
 </html>
