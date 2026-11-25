@@ -102,7 +102,8 @@ h2{font-size:clamp(34px,4.4vw,70px)}
 /* Panel 5: Anzeigetafeln im Tunnel */
 .screens{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0}
 .scr{position:absolute;top:24%;width:clamp(180px,17vw,280px);padding:18px;border:1px solid rgba(var(--or-rgb),.45);border-radius:10px;background:rgba(12,16,19,.78);backdrop-filter:blur(6px);box-shadow:0 0 40px rgba(var(--or-rgb),.12)}
-.scr-l{left:calc(50% - 26vw)}.scr-r{right:calc(50% - 26vw);text-align:center}
+.scr-l,.scr-r{left:var(--rx,calc(50% + 26vw));transform:translateX(-50%)}.scr-r{text-align:center}
+.screens .scr{top:var(--ty,20%)}.screens .scr-r{top:calc(var(--ty,20%) + 186px)}
 .scr p{font-size:14px;color:var(--mut);margin-top:10px}.scr p:first-child{margin-top:0}
 .scr i{display:block;height:10px;margin-top:6px;border-radius:5px;background:rgba(243,245,246,.12);position:relative;overflow:hidden}
 .scr i::after{content:"";position:absolute;inset:0;background:rgba(243,245,246,.6);transform-origin:left;transform:scaleX(calc(var(--v)*var(--g,0)))}
@@ -148,7 +149,7 @@ h2{font-size:clamp(34px,4.4vw,70px)}
 .demo{margin-top:10px;font-size:14px;color:var(--mut);border:1px dashed var(--line);display:inline-block;padding:6px 10px;border-radius:4px}
 .quotes{position:relative;margin-top:20px;min-height:110px}
 .quotes blockquote{position:absolute;inset:0 auto auto 0;font:500 clamp(18px,1.5vw,23px)/1.35 var(--f-d);opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
-.quotes blockquote.on{opacity:1;transform:none}
+.quotes blockquote{transition:opacity .45s,transform .45s}.quotes blockquote.on{opacity:1;transform:none;transition-delay:.5s}
 .quotes cite{display:block;margin-top:10px;font:500 14px/1.2 var(--f-b);color:var(--or);font-style:normal}
 .kfacts{list-style:none;display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
 .kfacts li{color:var(--mut);font-size:14px}
@@ -203,10 +204,10 @@ dialog::backdrop{background:rgba(8,10,12,.72);backdrop-filter:blur(4px)}
   .report{top:auto;bottom:calc(12px + env(safe-area-inset-bottom));left:16px;right:16px;width:auto;transform:none;padding:12px 14px}
   .rp-list,.rp-empty{display:none}.rp-act{grid-template-columns:1fr 1fr;margin-top:10px}
   .wall{display:none}
-  .scr{top:84px;width:42vw;padding:10px}.scr-l{left:16px}.scr-r{right:16px}
+  .screens .scr{top:84px;width:42vw;padding:10px;transform:none}.scr-l{left:16px}.scr-r{left:auto;right:16px}
   .scr p{font-size:12px;margin-top:6px}
   .strip{--sw:44vw}
-  .phone{top:96px;transform:rotate(-4deg);right:50%;margin-right:-26vw;width:52vw}
+  .phone{top:92px;transform:rotate(-4deg);right:50%;margin-right:-20vw;width:min(40vw,40vh * 9 / 19 * .9)}
   .t130-out{font-size:14px;min-height:0}
   .perks li{font-size:18px}
   .score b{font-size:56px}.quotes{min-height:90px;margin-top:12px}
@@ -214,6 +215,7 @@ dialog::backdrop{background:rgba(8,10,12,.72);backdrop-filter:blur(4px)}
   .hint{display:none}
 }
 @media (max-width:899px) and (orientation:landscape){
+  .shade{background:linear-gradient(90deg,rgba(var(--bg-rgb),.9) 0%,rgba(var(--bg-rgb),.6) 40%,rgba(var(--bg-rgb),0) 66%)}
   .tx,.tx-hero{bottom:auto;top:64px;width:50vw;right:auto}
   h1,h2,.tx-hero h1{font-size:28px}.tx .lead{display:none}.tx-hero .lead{display:block}
   .report{left:auto;width:290px;bottom:10px}.rp-act{grid-template-columns:1fr}
