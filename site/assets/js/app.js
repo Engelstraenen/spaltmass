@@ -152,6 +152,7 @@
     var cols = '127,242,200';
     try { cols = getComputedStyle(root).getPropertyValue('--or-rgb').trim() || cols; } catch (e) {}
     cx.save(); cx.scale(DPR, DPR); cx.lineWidth = 1.1;
+    if (MOB && PORT && flat < .05) { cx.beginPath(); cx.rect(0, 0, W, H * .52); cx.clip(); } // Raster bleibt im Bildband über dem Text
     cx.shadowColor = 'rgba(' + cols + ',.8)'; cx.shadowBlur = 6;
     // Ziel: Zeilen im Brief
     var lines = $$('.lines i'), pw = lines.length ? lines[0].parentNode.getBoundingClientRect().width : 0, tr = lines.map(function (l, i) { var r = l.getBoundingClientRect(); return [r.left, r.top, pw * ((i + 1) % 3 ? 1 : .72)]; });
