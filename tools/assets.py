@@ -9,7 +9,14 @@ Start: python3 tools/assets.py
 import json
 import os
 import time
-from PIL import Image
+from PIL import Image, ImageFilter
+import numpy as np
+
+
+def lap(im):
+    a = np.asarray(im.convert('L').resize((1200, round(1200 * im.size[1] / im.size[0]))), float)
+    l = a[1:-1, 1:-1] * 4 - a[:-2, 1:-1] - a[2:, 1:-1] - a[1:-1, :-2] - a[1:-1, 2:]
+    return l.var()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "assets-roh", "4k")
@@ -32,6 +39,10 @@ for fn in sorted(os.listdir(SRC)):
         continue
     im = Image.open(p).convert("RGB")
     w, h = im.size
+    # Nachschärfen (Masterfile V2.65): Unsharp-Mask, kein Upscale; Original bleibt in assets-roh
+    v0 = lap(im)
+    im = im.filter(ImageFilter.UnsharpMask(radius=1.6, percent=70, threshold=2))
+    print("schärfe", name, round(v0), "->", round(lap(im)))
     for suf, tw, q in (("", 3840, 86), ("-m", 1800, 84)):
         t = im if w <= tw else im.resize((tw, round(h * tw / w)), Image.LANCZOS)
         t.save(os.path.join(DST, name + suf + ".webp"), "WEBP", quality=q, method=5)
