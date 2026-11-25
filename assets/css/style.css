@@ -72,7 +72,8 @@ img{display:block}
 
 .fly,.wipe{position:absolute;opacity:0;overflow:hidden;pointer-events:none}
 .fly img,.wipe img{width:100%;height:100%;object-fit:cover}
-.wipe{inset:0;clip-path:inset(0 0 0 100%)}
+.wipe{inset:0;z-index:3}
+.fly{z-index:1}
 .wipe i{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--or);box-shadow:0 0 18px var(--or)}
 
 /* Brief → Gutachten */
@@ -238,3 +239,34 @@ dialog::backdrop{background:rgba(8,5,10,.7);backdrop-filter:blur(4px)}
   .ly img,.ly video,.wipe img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-composite:intersect}
   .fly{border-radius:2px}
 }
+/* Ebenen-Reihenfolge: Bilder (d06 beim Wischen z2) < Schatten < Grafik < Text */
+.shade{z-index:2}.grid,.ring,.mk,.finder,.doc{z-index:3}
+
+/* Mehr-Links, Mini-Diagramm, Lackfarben */
+.btn.more{font-weight:600}
+.mini{margin-top:22px;display:grid;gap:7px;max-width:420px}
+.mini p{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.mini div{display:grid;grid-template-columns:44px 1fr 74px;gap:10px;align-items:center;font-size:13px}
+.mini i{display:block;height:12px;border-radius:2px;background:linear-gradient(90deg,rgba(var(--or-rgb),.3),var(--or));transform-origin:left;transform:scaleX(calc(var(--v)*var(--g,0)))}
+.mini b{text-align:right;font-variant-numeric:tabular-nums}
+.mini small{font-size:11.5px;color:var(--mut)}
+.lackq{margin-top:20px;font-size:14px;color:var(--mut)}
+.lack{display:flex;gap:12px;margin-top:10px}
+.lack button{width:44px;height:44px;border-radius:50%;background:var(--c);border:2px solid rgba(255,255,255,.25);box-shadow:inset 0 -6px 12px rgba(0,0,0,.35);transition:transform .2s,border-color .2s}
+.lack button.on{border-color:var(--or);transform:scale(1.12)}
+.ly img.alt{opacity:0;transition:opacity .7s}
+.ly img.alt.on{opacity:1}
+@media (max-width:899px){.mini{display:none}.tx .btn.more{min-height:44px;padding:0 14px;font-size:14px}}
+@media (max-width:899px) and (orientation:landscape){.tx .btns .more{display:none}}
+@view-transition{navigation:auto}
+/* Mindestgrößen (Handy-Regel: Text ab 14 px, Tipp-Flächen 44 px) */
+.kick{font-size:14px;letter-spacing:.14em}
+.logo{min-height:44px;justify-content:center}
+.logo span{font-size:13px}
+.mk span{font-size:13px}
+.dial span{font-size:13px}
+.quotes cite,.demo,.foot,.mini p,.mini small,.mini div{font-size:14px}
+.finder .up{font-size:13px}
+.card .tag{font-size:13px}
+.src{font-size:14px}
+@media (max-width:899px){.kick{font-size:14px;margin-bottom:8px}.mk span{font-size:13px}}

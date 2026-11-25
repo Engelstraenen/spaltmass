@@ -34,9 +34,9 @@
     d03: { vis: [.205, .25, .275, .30], cam: [[.205, .58, .62, 1.9], [.25, .58, .63, 1.15], [.30, .58, .64, 1]] },
     d04: { vis: [.272, .29, .382, .398], cam: [[.265, .55, .63, 1.92], [.31, .56, .5, 1.04], [.36, .56, .5, 1.08], [.40, .55, .63, 1.92]] },
     d03b: { src: 'd03', vis: [.37, .40, .505, .53], cam: [[.37, .58, .64, 1.0], [.40, .58, .64, 1.0], [.41, .58, .64, 1.02], [.53, .58, .64, 1.06]] },
-    d06: { vis: [.722, .726, .74, .755], cam: [[.66, .58, .64, 1], [.725, .58, .64, 1], [.755, .58, .64, 1.25]] },
+    d06: { vis: [.69, .698, .74, .755], cam: [[.66, .58, .64, 1], [.725, .58, .64, 1], [.755, .58, .64, 1.25]] },
     d07: { vis: [.725, .76, .79, .82], cam: [[.725, .475, .53, 3.2], [.77, .5, .53, 1.05], [.82, .54, .53, 1.12]] },
-    d08: { vis: [.78, .815, .855, .885], cam: [[.78, .6, .5, 1.12], [.885, .62, .5, 1.02]] },
+    d08: { vis: [.78, .815, .855, .885], cam: [[.78, .7, .5, 1.12], [.885, .7, .5, 1.02]] },
     d09: { vis: [.86, .895, 2, 2], cam: [[.86, .5, .55, 1.25], [.92, .5, .55, 1.04], [1, .5, .55, 1]] }
   };
   if (HAS_A) { L.vA = { vis: [.095, .11, .21, .25], cam: [[.095, .5, .5, 1], [.25, .45, .58, 2.6]], scrub: [.10, .22] }; L.d02.vis = [.2, .22, .22, .25]; }
@@ -84,15 +84,15 @@
     x = dw > W ? clamp(x, W - dw, 0) : (W - dw) / 2; y = dh > H ? clamp(y, H - dh, 0) : clamp(y, Math.min(0, H - dh), Math.max(0, H - dh));
     CAMS[k] = { x: x, y: y, s: s };
     var m = mediaOf(k); if (!m) return;
-    m.style.width = iw + 'px'; m.style.height = ih + 'px';
-    m.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + s.toFixed(5) + ')';
+    var tf = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + s.toFixed(5) + ')';
+    (k === 'd07' ? $$('img', lys[k]) : [m]).forEach(function (el) { el.style.width = iw + 'px'; el.style.height = ih + 'px'; el.style.transform = tf; });
   }
   // Bildpunkt → Schirm
   function scr(k, fx, fy) { var c = CAMS[k], n = natOf(k); if (!c) return [-999, -999]; return [c.x + fx * n[0] * c.s, c.y + fy * n[1] * c.s]; }
   function visOf(k, p) { var v = L[k].vis; return Math.min(v[0] < 0 ? 1 : seg(p, v[0], v[1]), 1 - seg(p, v[2], v[3])); }
 
   /* ---------- Texte ---------- */
-  var TX = { hero: [-1, 0, .07, .095], orbit: [.11, .135, .19, .215], melden: [.30, .32, .365, .385], messen: [.42, .44, .49, .51], recht: [.515, .535, .585, .60], gutachten: [.605, .625, .665, .685], wie: [.715, .735, .765, .78], karriere: [.79, .81, .855, .87], bewertungen: [.885, .905, .935, .95], kontakt: [.955, .975, 2, 2] };
+  var TX = { hero: [-1, 0, .07, .095], orbit: [.11, .135, .19, .215], melden: [.30, .32, .365, .385], messen: [.42, .44, .49, .51], recht: [.515, .535, .585, .60], gutachten: [.605, .625, .665, .685], wie: [.724, .742, .768, .782], karriere: [.79, .81, .855, .87], bewertungen: [.885, .905, .935, .95], kontakt: [.955, .975, 2, 2] };
   var txs = {}; $$('.tx').forEach(function (el) { txs[el.getAttribute('data-tx')] = el; });
   function showTx(k, p) {
     var r = TX[k], el = txs[k], o = Math.min(r[0] < 0 ? 1 : seg(p, r[0], r[1]), 1 - seg(p, r[2], r[3]));
@@ -145,8 +145,8 @@
     cx.clearRect(0, 0, cv.width, cv.height);
     var oIn = seg(p, .425, .445), oOut = 1 - seg(p, .59, .605);
     var o = Math.min(oIn, oOut); if (o < .01) return;
-    var bend = seg(p, .435, .465) * (1 - seg(p, .505, .53));   // Raster biegt sich in die Delle, dann wieder flach
-    var flat = eio(seg(p, .52, .575));                         // Linien werden zu Briefzeilen
+    var bend = seg(p, .435, .465) * (1 - seg(p, .49, .508));   // Raster biegt sich in die Delle, dann wieder flach
+    var flat = eio(seg(p, .505, .552));                        // Linien werden zu Briefzeilen
     var c = scr('d03b', DENT[0], DENT[1]);
     var R = Math.min(W, H) * (MOB ? .36 : .30), n = 13, sp = (R * 2.4) / n;
     var cols = '127,242,200';
@@ -192,8 +192,8 @@
     if (!MOB) return [W * .66, H * .5]; if (PORT) return [W * .5, H * .3]; return [W * .74, H * .52];
   }
   function docu(p) {
-    var o = Math.min(seg(p, .515, .535), 1 - seg(p, .675, .70));
-    doc.style.opacity = o.toFixed(3); if (o < .01) { fly.style.opacity = 0; return; }
+    var o = Math.min(seg(p, .54, .556), 1 - seg(p, .675, .70));
+    doc.style.opacity = o.toFixed(3); docFly(p); if (p < .48 || p > .75) return;
     var dp = docPos(), sh = MOB && PORT ? .78 : 1;
     var tilt = eio(seg(p, .585, .625));
     doc.style.transform = 'translate(-50%,-50%) translate(' + (dp[0] - W / 2) + 'px,' + (dp[1] - H / 2) + 'px) scale(' + sh + ') rotateX(' + (tilt * 14) + 'deg) rotateY(' + (-tilt * 22) + 'deg) rotateZ(' + (tilt * 3) + 'deg)';
@@ -203,19 +203,21 @@
     pg2.style.opacity = pg3.style.opacity = tilt;
     var r = seg(p, .60, .62); rep.style.opacity = r; $('.lines').style.opacity = 1 - r;
     chk.forEach(function (li, i) { li.classList.toggle('on', p > .628 + i * .009); });
-    // Foto fliegt aus dem Gutachten auf Vollbild
+  }
+  // Foto fliegt aus dem Gutachten auf Vollbild (deckungsgleich mit d06)
+  function docFly(p) {
     var f = eio(seg(p, .668, .70)), fo = seg(p, .664, .67) * (1 - seg(p, .728, .74));
     fly.style.opacity = fo.toFixed(3);
-    if (fo > .01) { var rr = repImg.getBoundingClientRect(); place('d06', p); var c6 = CAMS.d06 || { x: 0, y: 0, s: Math.max(W / 3584, H / 2016) }, n6 = nat('d06-repariert-nah'), tw = n6[0] * c6.s, th = n6[1] * c6.s;
+    if (fo > .01) { var rr = (repImg.offsetWidth ? repImg : rep).getBoundingClientRect(); place('d06', p); var c6 = CAMS.d06 || { x: 0, y: 0, s: Math.max(W / 3584, H / 2016) }, n6 = nat('d06-repariert-nah'), tw = n6[0] * c6.s, th = n6[1] * c6.s;
       fly.style.left = lerp(rr.left, c6.x, f) + 'px'; fly.style.top = lerp(rr.top, c6.y, f) + 'px'; fly.style.width = lerp(rr.width, tw, f) + 'px'; fly.style.height = lerp(rr.height, th, f) + 'px'; }
   }
   // Vorher/Nachher-Wischer über deckungsgleichem Bild (d03 → d06)
   var wipeI = $('i', wipe), d03full = null;
   function wiper(p) {
-    var o = seg(p, .698, .705) * (1 - seg(p, .726, .73)); wipe.style.opacity = o.toFixed(3); if (o > .01) place('d06', p);
-    var w = eio(seg(p, .705, .725)); wipe.style.clipPath = 'inset(0 0 0 ' + ((1 - w) * 100).toFixed(2) + '%)';
-    // Bild im Wischer genau wie die d03-Ebene legen
-    var im = $('img', wipe), c = CAMS.d06; if (c) { var n = nat('d06-repariert-nah'); im.style.cssText = 'position:absolute;left:0;top:0;width:' + n[0] + 'px;height:' + n[1] + 'px;max-width:none;object-fit:fill;transform-origin:0 0;transform:translate3d(' + c.x + 'px,' + c.y + 'px,0) scale(' + c.s + ')'; }
+    // Die d06-Ebene selbst wird über das fliegende Vorher-Bild gewischt (liegt darüber, z-index)
+    var o = seg(p, .698, .704) * (1 - seg(p, .732, .736)); wipe.style.opacity = o.toFixed(3);
+    var w = eio(seg(p, .704, .732)), el = lys.d06;
+    if (el) { el.style.zIndex = p > .69 && p < .76 ? 2 : ''; el.style.clipPath = p < .733 ? 'inset(0 0 0 ' + Math.min(99.8, (1 - w) * 100).toFixed(2) + '%)' : ''; }
     wipeI.style.left = ((1 - w) * 100).toFixed(2) + '%';
   }
 
@@ -231,7 +233,7 @@
   }
   var cnts = $$('[data-count]');
   function count(el, t) { var v = +el.getAttribute('data-count') * t, d = +(el.getAttribute('data-dec') || 0); el.textContent = v.toFixed(d).replace('.', ','); }
-  var stars = $('.stars'), ticker = $('.ticker');
+  var stars = $('.stars'), ticker = $('.ticker'), mini = $('.mini');
   var quotes = $$('.quotes blockquote'), qi = 0;
   setInterval(function () { quotes.forEach(function (q, i) { q.classList.toggle('on', i === qi); }); qi = (qi + 1) % quotes.length; }, 3800);
   quotes[0].classList.add('on');
@@ -275,6 +277,7 @@
     readsB.forEach(function (b, i) { count(b, eout(seg(p, .45 + i * .012, .47 + i * .012))); });
     var r = eout(seg(p, .905, .925)); count($('.score b'), r); stars.style.setProperty('--f', eout(seg(p, .91, .935)).toFixed(3));
     ticker.style.opacity = Math.min(seg(p, .9, .915), 1 - seg(p, .94, .955)).toFixed(3);
+    if (mini) mini.style.setProperty('--g', eout(seg(p, .628, .652)).toFixed(3));
     var dg = degAt(p); degEl.textContent = '[ ' + ('00' + dg).slice(-3) + '° ]'; dial.style.setProperty('--d', (dg / 360).toFixed(3));
     var nm = NAMES[0][1]; NAMES.forEach(function (n) { if (p >= n[0]) nm = n[1]; }); chEl.textContent = nm;
     hint.style.opacity = (1 - seg(p, .01, .04)).toFixed(3);
@@ -288,7 +291,18 @@
     readScroll(); lastP = -1;
   }
   addEventListener('resize', resize); addEventListener('scroll', readScroll, { passive: true });
-  resize(); requestAnimationFrame(frame);
+  resize();
+  // Rücksprung von einer Unterseite: index.html?p=0.44 → an dieselbe Stelle der Fahrt
+  var qp = parseFloat(new URLSearchParams(location.search).get('p'));
+  if (qp > 0 && qp <= 1) { scrollTo(0, fahrt.offsetTop + qp * (fahrt.offsetHeight - H)); readScroll(); cur = want; t0 = -1e5; }
+  requestAnimationFrame(frame);
+
+  /* Lackfarbe am Drehteller-Auto umschalten (deckungsgleiche Bilder) */
+  $$('.lack button').forEach(function (b) {
+    var n = b.getAttribute('data-lack'); if (n && !IMG[n]) { b.hidden = true; return; }
+    b.addEventListener('click', function () { $$('.lack button').forEach(function (x) { x.classList.toggle('on', x === b); }); $$('img.alt', lys.d07).forEach(function (im) { im.classList.toggle('on', im.getAttribute('data-src') === n); }); });
+  });
+  if ($$('.lack button').filter(function (b) { return !b.hidden; }).length < 2) { var lq = $('.lackq'); if (lq) lq.hidden = true; $('.lack').hidden = true; }
 
   /* Kapitel anspringen */
   $$('[data-go]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); var k = a.getAttribute('data-go'), p = CH[k] || 0; root.classList.remove('menu-open'); $('.burger').setAttribute('aria-expanded', false); scrollTo({ top: fahrt.offsetTop + p * (fahrt.offsetHeight - H), behavior: 'smooth' }); }); });
