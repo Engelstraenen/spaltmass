@@ -50,3 +50,5 @@ sjinn.ai im Chrome eingeloggt ✅ · GitHub (gh) prüfen vor Push
 ## 10. Ablage
 Code: dieser Ordner. Storyboards: `konzepte/`. Rohmedien: `assets-roh/` (gitignore).
 - 25.11.2026: Neuaufbau, Eugen wählt Storyboard 1 „Drehteller“ (SPSB-4, konzepte/4-drehteller.jpg): ein Unfallauto auf Drehteller, Scroll umkreist und zoomt in Dellen, jede Delle = Kapitel, eine durchgehende Geschichte. Farbwelt Aubergine #1d1420 + Mint #7ff2c8. Altes Schema (Streiflicht) abgelöst. Drehbuch konzepte/umbau-drehbuch.md, Motive konzepte/motive-drehteller.json (Schäden alle RECHTS: Tür hinten rechts = Delle 01).
+- 25.11.2026 (Eugen): KEINE Lackfarben/Farb-Konfigurator – ein Kfz-Gutachter wählt keine Farben. Interaktionen nur aus der echten Gutachter-Arbeit: Schaden vermessen, Reparaturkosten / Wiederbeschaffungswert / Restwert, 130-%-Regel, Wertminderung, Nutzungsausfall, Vorher/Nachher, Bagatell-Check. Farb-Motive d10–d12 gestrichen.
+- 25.11.2026: Basis Vorlage motionsites „Veyra Electric“ (szene.css/szene.js), Hotspots 01 Delle Tür · 02 Kotflügel · 03 Stoßfänger · 04 Fahrzeugwert · Vorher/Nachher.

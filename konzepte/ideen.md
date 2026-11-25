@@ -2,7 +2,7 @@
 
 | # | Idee | Wo | Status |
 |---|---|---|---|
-| 1 | Lackfarbe am Drehteller-Auto umschalten (Silber/Rot/Schwarz/Weiß, deckungsgleiche Edits) – „Ihr Auto, wie neu“ | Startseite, Kapitel Ergebnis | gebaut |
+| 1 | 130-%-Check: Reparaturkosten zu Wiederbeschaffungswert (60/115/145 %) → Reparatur, 130-%-Regel oder wirtschaftlicher Totalschaden | Startseite, Kapitel Ergebnis | gebaut (ersetzt Lackfarben, Eugen 25.11.: Gutachter wählt keine Farben) |
 | 2 | Bagatell-Check: 3 Fragen → Gutachten oder Kostenvoranschlag? (Faustregel ~750 €) | melden.html | gebaut |
 | 3 | Musterantwort an die gegnerische Versicherung („Ich beauftrage meinen eigenen Sachverständigen“) zum Kopieren | recht.html | gebaut |
 | 4 | Gutachten-Tracker wie Paketverfolgung (Demo): Gemeldet → Termin → Besichtigt → Kalkuliert → Versendet | gutachten.html | gebaut |
@@ -17,3 +17,5 @@
 - Nutzungsausfall (Schwacke/Sanden-Danner-Küppersbusch): Gruppen A 23 € … L 175 € je Tag (A 23, B 29, C 35, D 38, E 43, F 50, G 59, H 65, J 79, K 119, L 175). Richtwerte, Gruppe je Modell.
 - Merkantile Wertminderung Ruhkopf/Sahm: (WBW + Reparaturkosten) × Faktor; Reparatur 10–30 / 30–60 / 60–90 % des WBW: 1. Jahr 5/6/7 %, 2. Jahr 4/5/6 %, 3.–4. Jahr 3/4/5 %. Keine Pflichtformel, Gutachter prüft Einzelfall.
 - Bagatellgrenze: Faustregel rund 750 € (Rechtsprechung, BGH VI ZR 365/03).
+
+- 130-%-Regel: Reparatur auf Kosten des Schädigers erlaubt, wenn Brutto-Reparaturkosten ≤ 130 % des Wiederbeschaffungswerts, fachgerecht nach Gutachten repariert und weiter genutzt (BGH, u. a. VI ZR 30/11). Darüber: wirtschaftlicher Totalschaden, Erstattung = Wiederbeschaffungswert − Restwert. Gutachter ermittelt Reparaturkosten, Wiederbeschaffungswert (Marktrecherche) und Restwert.
