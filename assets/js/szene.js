@@ -9,12 +9,6 @@ function im(n, fb) { return IMG[n] ? 'assets/img/' + n + '.webp?v=' + (IMG._v ||
 var baseExterior = im('d01-hero')
 
 var appearanceOptions = {
-  paint: [
-    { id:'silver', label:'Silber, repariert', color:'#b9bcc2', image: im('d07-repariert', 'd01-hero') },
-    { id:'rot',    label:'Granatrot, repariert', color:'#7a1424', image: im('d10-lack-rot') },
-    { id:'schwarz',label:'Schwarz, repariert', color:'#121214', image: im('d11-lack-schwarz') },
-    { id:'weiss',  label:'Perlweiß, repariert', color:'#f2f0ec', image: im('d12-lack-weiss') }
-  ].filter(function (o) { return o.image }),
   wheels: [
     { id:'original', label:'Vorher: nach dem Unfall', color:'#5b4a60', image: baseExterior },
     { id:'nachher',  label:'Nachher: nach Gutachten repariert', color:'#7ff2c8', image: im('d07-repariert', 'd01-hero') }
@@ -57,6 +51,18 @@ var systems = {
       { label:'Wertminderung', text:'Ein Unfallauto ist beim Verkauf weniger wert. Das steht nur im Gutachten, nicht im Kostenvoranschlag.', x:30, y:30 },
       { label:'Nutzungsausfall', text:'Für jeden Tag ohne Auto: nach Fahrzeuggruppe 23 bis 175 € pro Tag (Richtwerte).', x:72, y:34 }
     ]
+  },
+  werte: {
+    index:'04', label:'Fahrzeugwert', category:'Wert & Totalschaden', title:'Reparieren\noder ersetzen?',
+    short:'Werte ansehen',
+    description:'Der Gutachter ermittelt drei Zahlen: Reparaturkosten, Wiederbeschaffungswert und Restwert. Daraus folgt, ob repariert wird oder ein wirtschaftlicher Totalschaden vorliegt.',
+    benefit:'Bis 130 % des Wiederbeschaffungswerts darf auf Kosten des Gegners repariert werden, wenn fachgerecht repariert wird und Sie das Auto weiter fahren.',
+    image: im('d02-profil'), anchor:{ x:52, y:30 }, more:'gutachten.html', back:'.645',
+    points:[
+      { label:'Wiederbeschaffungswert', text:'Was ein gleichwertiges Auto beim Händler kostet, per Marktrecherche ermittelt. Liegt meist über dem Zeitwert.', x:38, y:38 },
+      { label:'Reparaturkosten', text:'Kalkuliert nach Herstellervorgaben: Teile, Lack, Arbeitszeit. Entscheidend ist das Verhältnis zum Wiederbeschaffungswert.', x:45, y:58 },
+      { label:'Restwert', text:'Was das Unfallauto noch bringt, mit verbindlichen Angeboten belegt. Bei Totalschaden zahlt der Gegner Wiederbeschaffungswert minus Restwert.', x:27, y:62 }
+    ]
   }
 }
 
@@ -64,8 +70,8 @@ var hotspots = [
   { id:'delle',     label:'01 Delle Tür',  anchor:systems.delle.anchor,     target:'delle' },
   { id:'melden',    label:'02 Kotflügel',  anchor:systems.melden.anchor,    target:'melden' },
   { id:'gutachten', label:'03 Stoßfänger', anchor:systems.gutachten.anchor, target:'gutachten' },
-  { id:'paint',     label:'Farbe nach der Reparatur', anchor:{ x:76, y:42 }, target:null },
-  { id:'wheels',    label:'Vorher / Nachher', anchor:{ x:56, y:36 }, target:null }
+  { id:'werte',     label:'04 Fahrzeugwert', anchor:{ x:52, y:30 }, target:'werte' },
+  { id:'wheels',    label:'Vorher / Nachher', anchor:{ x:78, y:44 }, target:null }
 ]
 
 /* ───────── Icons ───────── */
@@ -85,7 +91,7 @@ var state = {
   phase:'overview', selected:'delle', hovered:null, annotation:null,
   ready:false, reduced:false, detailVisible:false, error:'',
   appearance:null, appearancePinned:false, appearanceClosing:false,
-  optionId:'silver', appearanceImage: baseExterior, neutral:true,
+  optionId:'original', appearanceImage: baseExterior, neutral:true,
   loadedOptions: new Set([baseExterior]), failedOptions: new Set()
 }
 var optionLoads = new Set()

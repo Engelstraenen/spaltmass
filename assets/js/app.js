@@ -300,12 +300,9 @@
   if (qp > 0 && qp <= 1) { scrollTo(0, fahrt.offsetTop + qp * (fahrt.offsetHeight - H)); readScroll(); cur = want; t0 = -1e5; }
   requestAnimationFrame(frame);
 
-  /* Lackfarbe am Drehteller-Auto umschalten (deckungsgleiche Bilder) */
-  $$('.lack button').forEach(function (b) {
-    var n = b.getAttribute('data-lack'); if (n && !IMG[n]) { b.hidden = true; return; }
-    b.addEventListener('click', function () { $$('.lack button').forEach(function (x) { x.classList.toggle('on', x === b); }); $$('img.alt', lys.d07).forEach(function (im) { im.classList.toggle('on', im.getAttribute('data-src') === n); }); });
-  });
-  if ($$('.lack button').filter(function (b) { return !b.hidden; }).length < 2) { var lq = $('.lackq'); if (lq) lq.hidden = true; $('.lack').hidden = true; }
+  /* 130-%-Check: Reparatur oder wirtschaftlicher Totalschaden (BGH-Rechtsprechung, Bruttoreparaturkosten zu Wiederbeschaffungswert) */
+  var T130 = { 60: 'Reparatur lohnt sich: Die Kosten liegen klar unter dem Wiederbeschaffungswert. Dazu kommen Wertminderung und Nutzungsausfall.', 115: '130-%-Regel: Reparieren ist erlaubt, wenn fachgerecht nach Gutachten repariert wird und Sie das Auto weiter nutzen. Der Gegner zahlt.', 145: 'Wirtschaftlicher Totalschaden: Sie bekommen Wiederbeschaffungswert minus Restwert. Den Restwert belegen wir mit echten Angeboten.' };
+  $$('.t130 button').forEach(function (b) { b.addEventListener('click', function () { $$('.t130 button').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); }); var o = $('.t130-out'); if (o) o.textContent = T130[b.getAttribute('data-r')]; }); });
 
   /* Kapitel anspringen */
   $$('[data-go]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); var k = a.getAttribute('data-go'), p = CH[k] || 0; root.classList.remove('menu-open'); $('.burger').setAttribute('aria-expanded', false); scrollTo({ top: fahrt.offsetTop + p * (fahrt.offsetHeight - H), behavior: 'smooth' }); }); });
